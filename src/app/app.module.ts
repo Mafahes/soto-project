@@ -80,13 +80,9 @@ import { environment } from '../environments/environment';
 import { NgxOneSignalModule } from 'ngx-onesignal';
 import {MomentDateAdapter} from '@angular/material-moment-adapter';
 import { HeaderComponent } from './pages/header/header.component';
-import { SafetyBordComponent } from './pages/safety-bord/safety-bord.component';
-import { TicketListComponent } from './pages/ticket-list/ticket-list.component';
-import { TerminalCatListComponent } from './pages/terminal/terminal-cat-list/terminal-cat-list.component';
 import { CounterPipePipe } from './shared/components/counter-pipe.pipe';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import {ChartsModule} from "ng2-charts";
-import { FilterTicketsPipe } from './pages/ticket-list/filter-tickets.pipe';
 import { BrigadeComponent } from './pages/dispatcher/brigade/brigade.component';
 import { CartsComponent } from './pages/dispatcher/carts/carts.component';
 import { StatisticComponent } from './pages/dispatcher/statistic/statistic.component';
@@ -122,12 +118,8 @@ export const MY_FORMATS = {
     ConfirmDialogueComponent,
     ActualizeDialogComponent,
     HeaderComponent,
-    SafetyBordComponent,
-    TicketListComponent,
-    TerminalCatListComponent,
     CounterPipePipe,
     ErrorPageComponent,
-    FilterTicketsPipe,
     BrigadeComponent,
     CartsComponent,
     StatisticComponent

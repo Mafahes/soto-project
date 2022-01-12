@@ -41,15 +41,6 @@ export class AppComponent implements OnInit{
   getApiType(): string {
     return localStorage.getItem('apiType');
   }
-  async getSessions(): Promise<Session[]> {
-    return new Promise((res, rej) => {
-      this.api.getSession().subscribe((e) => {
-        this.sessions = JSON.parse(JSON.stringify(e)); // remove reference
-        this.sessionsInitialized = true;
-        console.log(e);
-        res(e);
-      });
-    })}
   switchApi(type: boolean): void {
     if (type) {
       localStorage.setItem('apiType', 'prod');
@@ -114,7 +105,6 @@ export class AppComponent implements OnInit{
         this.router.navigate(['/login']);
       }
     } else {
-      await this.getSessions();
       if(route === '/') {
         if(this.sessions.length > 0) {
           this.router.navigate(['room/session/' + this.sessions[0].id]);

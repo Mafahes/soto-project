@@ -1,6 +1,6 @@
 export enum ApiTypes {
-  TEST = 'https://electronicqueue.3dcafe.ru/',
-  PROD = 'https://electronicqueue.3dcafe.ru/'
+  TEST = 'https://soto.3dcafe.ru/',
+  PROD = 'https://soto.3dcafe.ru/'
 }
 export class Api {
   public static API_LINK = ApiTypes.TEST;
