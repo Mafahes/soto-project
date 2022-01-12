@@ -1,0 +1,24 @@
+<form [formGroup]="form" class="w-100 h-100">
+  <div style="width: 100vw; height: 100vh; background-color: #5D7A9F" class="p-4 d-flex justify-content-center align-items-center">
+    <div class="card-theme w-75 h-75 d-flex justify-content-center align-items-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <p class="title">АВТОРИЗАЦИЯ</p>
+            <p class="subtitle mb-5">Пожалуйста авторизуйтесь для получения доступа!</p>
+            <input [readonly]="loading" class="w-100" placeholder="E-Mail" formControlName="email" matInput>
+            <div class="my-5"></div>
+            <input [readonly]="loading" class="w-100" placeholder="Пароль" type="password" formControlName="code" matInput>
+            <div class="my-5"></div>
+            <mat-progress-bar *ngIf="loading" mode="buffer"></mat-progress-bar>
+            <div class="d-flex flex-row justify-content-center">
+              <button *ngIf="!loading" style="color: white !important;" mat-raised-button color="primary" (click)="submitLogin()" [disabled]="!form.valid">{{form.valid ? 'Войти' : 'Введите данные для авторизации'}}</button>
+            </div>
+          </div>
+          <div class="col-md-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

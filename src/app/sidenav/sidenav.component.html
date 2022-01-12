@@ -1,0 +1,49 @@
+<mat-toolbar class="appbar" color="primary">
+  <button
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="drawer.toggle()"
+    *ngIf="isHandset$ | async">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+<!--  <span>{{!!app?.user?.inits ? app?.user?.inits : 'Инициалы отсутствуют'}}</span>-->
+  <span class="example-spacer"></span>
+<!--  <button (click)="app.switchApi(apiType === null ? true : !(apiType === 'prod'))" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">-->
+<!--    <mat-icon matBadge="{{apiType === null ? 'Тест' : apiType === 'prod' ? 'Бой' : 'Тест'}}" matBadgeColor="warn">settings_input_antenna</mat-icon>-->
+<!--  </button>-->
+<!--  <button (click)="app.getSelfRoute()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">-->
+<!--    <mat-icon>account_box</mat-icon>-->
+<!--  </button>-->
+<!--  <button (click)="subscribed ? unsub() : sub()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">-->
+<!--    <mat-icon><mat-icon>{{subscribed ? 'notifications_active' : 'notifications_off'}}</mat-icon></mat-icon>-->
+<!--  </button>-->
+  <button (click)="app.exit()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <ng-container *ngFor="let item of routes; let i = index">
+        <div class="my-3" *ngIf="i === 0"></div>
+        <mat-divider *ngIf="item.line"></mat-divider>
+        <a mat-list-item *ngIf="!item.line" routerLinkActive="active-menu-link" [routerLink]="item.path">
+          <span style="flex: 3" *ngIf="!item.line" class="item-list__text">{{item.title}}</span>
+        </a>
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="m-2">
+      <div class="py-3"></div>
+      <ngx-spinner></ngx-spinner>
+      <router-outlet></router-outlet>
+    </div>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

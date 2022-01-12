@@ -1,0 +1,65 @@
+.sidenav-container {
+  height: 93%;
+}
+
+.sidenav {
+  width: 230px;
+}
+::ng-deep {
+  .mat-badge-content {
+    font-weight: 100;
+    font-size: 9px;
+  }
+}
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+::ng-deep .active-menu-link {
+  > div {
+    background: black !important;
+  }
+  span {
+    color: white !important;
+  }
+}
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+mat-toolbar {
+  box-shadow: 0 0.5rem 1rem 0 rgb(44 51 73 / 10%);
+}
+.appbar {
+  z-index: 999 !important;
+  background-color: white !important;
+  span {
+    color: #222b45ba;
+    font-family: "Inter", sans-serif;
+  }
+}
+mat-icon {
+  color: #222b45;
+}
+.item-list__text {
+  color: gray;
+  font-size: 16px;
+  font-family: HumanistRegular, sans-serif;
+}
+::ng-deep .mat-list-item-content {
+  background: white; /* default color */
+  /* "to left" / "to right" - affects initial color */
+  background: linear-gradient(to left, white 50%, black 50%) right;
+  background-size: 200%;
+  transition: .2s ease-out;
+  //justify-content: space-around !important;
+}
+::ng-deep .mat-list-item-content:hover {
+  background-position: left;
+  .item-list__text {
+    color: white
+  }
+}
+.example-spacer {
+  flex: 1 1 auto;
+}

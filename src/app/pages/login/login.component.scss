@@ -1,0 +1,51 @@
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  font-family: HumanistBold, sans-serif;
+}
+p {
+  line-height: 1em;
+}
+.subtitle {
+  font-size: 18px;
+  font-weight: 100;
+  color: white;
+  text-align: center;
+  font-family: HumanistRegular, sans-serif;
+}
+button:disabled {
+  background-color: black !important;
+}
+button {
+  border-radius: 0;
+  font-size: 30px !important;
+  font-family: HumanistRegular, sans-serif;
+  padding: 16px 94px;
+}
+.card-theme {
+  background: #5D7A9F;
+}
+button {
+  ::ng-deep.mat-button-wrapper {
+    font-family: HumanistRegular, sans-serif !important;
+    font-size: 30px !important;
+  }
+}
+input {
+  font-family: HumanistRegular, sans-serif !important;
+  border: 1px solid white;
+  border-radius: 0;
+  background-color: transparent;
+  font-size: 20px;
+  font-weight: 400 !important;
+  color: #C6C6C6;
+  padding: 23px;
+  *::placeholder {
+    color: red !important;
+  }
+}
+::placeholder {
+  color: #C6C6C6 !important;
+}

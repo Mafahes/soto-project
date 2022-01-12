@@ -1,0 +1,55 @@
+.root-class {
+  min-height: 100vh;
+  width: 100%;
+  background-color: black;
+}
+:host ::ng-deep {
+  button.mat-primary {
+    background-color: black !important;
+    .mat-button-wrapper {
+      font-family: HumanistRegular, sans-serif !important;
+    }
+  }
+  .ng2-smart-actions > ng2-st-tbody-custom {
+    display: flex;
+    flex-direction: column;
+  }
+  mat-checkbox, input[placeholder], mat-label, .ng-option-label {
+    font-family: "Inter", sans-serif !important;
+  }
+  .ng2-smart-sort-link {
+    font-family: 'Inter', sans-serif !important;
+    color: #222b45 !important;
+  }
+  ng2-smart-table {
+    border-radius: 5px;
+  }
+  ng2-smart-table table {
+    background-color: #F4F4F4;
+  }
+  .ng2-smart-row > td {
+    border: 1px solid white;
+  }
+  .ng2-smart-filters > th {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+  }
+  .ng2-smart-titles > th {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+  }
+  app-edit-btn-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  input {
+    font-weight: 300 !important;
+    background: #fafafa;
+    border: transparent;
+    border-radius: 5px;
+  }
+  ng2-smart-table-cell > * > * > .ng-star-inserted {
+    //padding: 15px;
+  }
+}

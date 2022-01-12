@@ -1,0 +1,113 @@
+<div class="container-fluid appbar">
+  <div class="row header pt-4" style="margin-top: 25px">
+    <div class="col-2">
+      <div style="margin-left: 10px">
+        <span>
+        Государственное<br/>Бюджетное<br/>Учреждение<br/>города Москвы<br/>Ритуал
+      </span>
+      </div>
+    </div>
+    <div class="col-10 d-flex justify-content-end align-items-start">
+      <div style="margin-right: 50px">
+        <span style="font-size: 48px">
+        {{currentDate | date: 'HH:mm'}}
+      </span>
+      </div>
+    </div>
+  </div>
+  <div class="row d-flex">
+    <div class="line">
+    </div>
+  </div>
+</div>
+<div class="container-fluid cats-container" style="height: calc(100vh - 150px);" *ngIf="!!roomCats && !!roomId && !completed">
+  <div class="row" *ngIf="type === 1">
+    <div *ngFor="let item of roomCats.category" class="col-4 mb-3">
+      <div (click)="switchType(item)" class="cat-item h-100 d-flex flex-column justify-content-center align-items-center">
+        <img src="assets/images/cat_item.png"/>
+        <p>{{item.name}}</p>
+        <p>{{item.description}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12" style="margin-left: 10px">
+      <span class="title">Выберите услугу</span>
+    </div>
+  </div>
+  <div class="row mb-3 h-100" style="margin-top: 45px">
+    <div class="col-3" style="height: 485px" (click)="registerTicket(item.id)" [class.active-block]="selectedTicket === item.id" *ngFor="let item of selectedCat.services; let i = index;">
+      <div class="container-cat mx-3 d-flex flex-column justify-content-between">
+        <div>
+          <span style="font-size: 25px;line-height: 38px;">{{item.name}}</span>
+        </div>
+        <ng-container [ngSwitch]="i">
+          <img *ngSwitchCase="0"
+               class="mb-5"
+               style="height: 266px;width: 100%;object-position: bottom;object-fit: cover;"
+               src="https://electronicqueue.3dcafe.ru/upload/9dbfd20c-c73e-45d8-b7ec-04244c11a298.png"/>
+          <img *ngSwitchCase="1"
+               class="mb-5"
+               style="height: 266px;width: 100%;object-fit: contain;"
+               src="https://electronicqueue.3dcafe.ru/upload/63fd08dd-1e69-4a5a-9865-788a9af27f0e.png"
+          />
+          <img *ngSwitchCase="2"
+               class="mb-5"
+               style="height: 266px;width: 100%;object-position: bottom;object-fit: cover;"
+               src="https://electronicqueue.3dcafe.ru/upload/b27eb62e-a973-4ede-a749-59d0fbecf5bc.png"
+          />
+          <img *ngSwitchCase="3"
+               class="mb-5"
+               src="https://electronicqueue.3dcafe.ru/upload/e21e72b0-f0c8-467c-b1af-b9a26168ca5b.png"
+               style="height: 225px;width: 100%;object-fit: contain;"/>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+<!--  <div class="row" *ngIf="type === 2">-->
+<!--    <div *ngFor="let item of selectedCat.services" class="col-4 mb-4">-->
+<!--      <div (click)="registerTicket(item.id)" [class.active-block]="selectedTicket === item.id" class="cat-item h-100 d-flex flex-column justify-content-center align-items-center">-->
+<!--        <img src="assets/images/cat_item.png"/>-->
+<!--        <p>{{item.name}}</p>-->
+<!--        <p>{{item.description}}</p>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+</div>
+<div class="container cats-container" *ngIf="!roomId">
+  <div class="row">
+    <div class="col-12 mb-3">
+      <div class="h-100 d-flex flex-column justify-content-center align-items-center">
+        <span class="error-label">Выберите комнату для терминала!</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container cats-container" *ngIf="completed && !!ticket">
+  <div class="row">
+    <div class="col-12 mb-3">
+      <div class="h-100 d-flex flex-column justify-content-center align-items-center">
+        <span class="error-label">Пожалуйста, возьмите талон и<br>дождитесь своей очереди</span>
+        <div class="container-white my-5 w-50 p-4" style="gap: 20px">
+          <span class="label" style="font-size: 48px;text-align: center; color: black">{{ticket.service.name}}</span>
+          <span class="label" style="font-size: 36px; color: black">Талон</span>
+          <span class="label" style="font-size: 120px; color: black;font-family: HumanistBold, sans-serif">{{ticket.name}}</span>
+          <div class="d-flex w-100 flex-row justify-content-between">
+            <span class="label" style="font-size: 24px">Дата: {{ticket.dateAdd | date: 'dd.MM.yyyy'}}</span>
+            <span class="label" style="font-size: 24px">Время: {{ticket.dateAdd | date: 'HH:mm'}}</span>
+          </div>
+        </div>
+        <span class="label" style="color: white; font-size: 96px">{{countDown | counterPipe}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container d-flex justify-content-center align-items-center p-0 cats-container" style="height: 100vh" *ngIf="completed && !ticket">
+  <div class="row">
+    <div class="col-12 mb-3">
+      <div class="h-100 d-flex flex-column justify-content-center align-items-center">
+        <span class="error-label">Прием приостановлен.</span>
+      </div>
+    </div>
+  </div>
+</div>

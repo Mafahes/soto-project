@@ -1,0 +1,21 @@
+.header {
+  * {
+    color: white;
+  }
+}
+p, span {
+  font-family: HumanistRegular, sans-serif;
+  line-height: 1em !important;
+}
+.header__labels {
+  p:nth-child(1) {
+    font-size: 64px;
+  }
+  p:nth-child(2) {
+    font-size: 36px;
+  }
+}
+.line {
+  background-color: white;
+  height: 3px;
+}

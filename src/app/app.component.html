@@ -1,0 +1,14 @@
+<ngx-spinner></ngx-spinner>
+<div class="w-100 h-100 d-flex justify-content-center align-items-center" *ngIf="!initialized">
+  <mat-spinner></mat-spinner>
+</div>
+<app-sidenav *ngIf="!isTerminal && !isEmpty && route !== '/login' && isAdmin && initialized"></app-sidenav>
+<app-login *ngIf="route === '/login' && initialized"></app-login>
+<ng-container *ngIf="initialized">
+  <div *ngIf="isTerminal && !isEmpty" class="root-class none-hover px-5">
+    <router-outlet></router-outlet>
+  </div>
+  <div *ngIf="isEmpty && sessionsInitialized">
+    <router-outlet></router-outlet>
+  </div>
+</ng-container>
