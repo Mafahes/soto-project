@@ -7,20 +7,19 @@
     *ngIf="isHandset$ | async">
     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
   </button>
-<!--  <span>{{!!app?.user?.inits ? app?.user?.inits : 'Инициалы отсутствуют'}}</span>-->
+  <span class="fio-class">Петров В.В.</span>
   <span class="example-spacer"></span>
-<!--  <button (click)="app.switchApi(apiType === null ? true : !(apiType === 'prod'))" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">-->
-<!--    <mat-icon matBadge="{{apiType === null ? 'Тест' : apiType === 'prod' ? 'Бой' : 'Тест'}}" matBadgeColor="warn">settings_input_antenna</mat-icon>-->
+  <div class="d-flex flex-row btn-line">
+    <button>
+      Создать карточку
+    </button>
+    <button (click)="app.exit()">
+      Выход
+    </button>
+  </div>
+<!--  <button (click)="app.exit()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">-->
+<!--    <mat-icon>exit_to_app</mat-icon>-->
 <!--  </button>-->
-<!--  <button (click)="app.getSelfRoute()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">-->
-<!--    <mat-icon>account_box</mat-icon>-->
-<!--  </button>-->
-<!--  <button (click)="subscribed ? unsub() : sub()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">-->
-<!--    <mat-icon><mat-icon>{{subscribed ? 'notifications_active' : 'notifications_off'}}</mat-icon></mat-icon>-->
-<!--  </button>-->
-  <button (click)="app.exit()" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>exit_to_app</mat-icon>
-  </button>
 </mat-toolbar>
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
@@ -39,8 +38,7 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div class="m-2">
-      <div class="py-3"></div>
+    <div>
       <ngx-spinner></ngx-spinner>
       <router-outlet></router-outlet>
     </div>

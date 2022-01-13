@@ -3,13 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
 import {LoginComponent} from './pages/login/login.component';
 import {ErrorPageComponent} from "./pages/error-page/error-page.component";
+import {BrigadeComponent} from "./pages/dispatcher/brigade/brigade.component";
 
 export class RouteList {
   static routes: Routes = [
     { path: '', component: DashboardComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'dispatcher/brigade', component: BrigadeComponent },
     { path: '**', redirectTo: 'error' },
-    { path: 'error', component: ErrorPageComponent }
+    { path: 'error', component: ErrorPageComponent },
   ];
 }
 

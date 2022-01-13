@@ -1,0 +1,9 @@
+.main-wrapper {
+  height: 93vh;
+}
+::ng-deep {
+  mgl-map {
+    height: 100%;
+    width: 100%;
+  }
+}

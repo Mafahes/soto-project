@@ -1,7 +1,26 @@
 .sidenav-container {
   height: 93%;
 }
-
+.fio-class {
+  color: black !important;
+  font-size: 30px;
+}
+.btn-line {
+  gap: 47px;
+  button {
+    font-family: HumanistRegular, sans-serif;
+    color: white;
+    border: 0;
+  }
+  button:first-child {
+    padding: 8px 64px;
+    background-color: black;
+  }
+  button:last-child {
+    padding: 8px 30px;
+    background-color: #5D7A9F;
+  }
+}
 .sidenav {
   width: 230px;
 }
@@ -34,8 +53,7 @@ mat-toolbar {
   z-index: 999 !important;
   background-color: white !important;
   span {
-    color: #222b45ba;
-    font-family: "Inter", sans-serif;
+    font-family: HumanistRegular, sans-serif;
   }
 }
 mat-icon {

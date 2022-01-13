@@ -7,9 +7,9 @@
           <div class="col-md-8">
             <p class="title">АВТОРИЗАЦИЯ</p>
             <p class="subtitle mb-5">Пожалуйста авторизуйтесь для получения доступа!</p>
-            <input [readonly]="loading" class="w-100" placeholder="E-Mail" formControlName="email" matInput>
+            <input [readonly]="loading" class="w-100" placeholder="E-Mail" formControlName="login" matInput>
             <div class="my-5"></div>
-            <input [readonly]="loading" class="w-100" placeholder="Пароль" type="password" formControlName="code" matInput>
+            <input [readonly]="loading" class="w-100" placeholder="Пароль" type="password" formControlName="password" matInput>
             <div class="my-5"></div>
             <mat-progress-bar *ngIf="loading" mode="buffer"></mat-progress-bar>
             <div class="d-flex flex-row justify-content-center">

@@ -86,6 +86,7 @@ import {ChartsModule} from "ng2-charts";
 import { BrigadeComponent } from './pages/dispatcher/brigade/brigade.component';
 import { CartsComponent } from './pages/dispatcher/carts/carts.component';
 import { StatisticComponent } from './pages/dispatcher/statistic/statistic.component';
+import {NgxMapboxGLModule} from "ngx-mapbox-gl";
 
 registerLocaleData(localeRu, 'ru');
 const INTERCEPTOR_PROVIDER: Provider = {
@@ -126,6 +127,9 @@ export const MY_FORMATS = {
   ],
   imports: [
     BrowserAnimationsModule,
+    NgxMapboxGLModule.withConfig({
+      accessToken: 'pk.eyJ1IjoibWFmYWhlcyIsImEiOiJjazV6cW5xdDUwMDRrM21ueHF2Z3EzY3VyIn0.RRuRqnVCy3VWno0v3Xk__w'
+    }),
     NgxOneSignalModule.forRoot({
       appId: '6f3f32b1-f333-4ac9-8edb-0fc40c368f6b',
       allowLocalhostAsSecureOrigin: true,

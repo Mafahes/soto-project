@@ -28,15 +28,6 @@ export class AppComponent implements OnInit{
   get isAdmin(): any {
     return this.route.includes('admin');
   }
-  get isTerminal(): any {
-    return this.route.includes('monitor') || this.route.includes('terminal');
-  }
-  get isEmpty(): any {
-    if(this.route.includes('/admin/rooms')) {
-      return false;
-    }
-    return this.route.includes('room');
-  }
   initialized = false;
   getApiType(): string {
     return localStorage.getItem('apiType');
@@ -101,17 +92,7 @@ export class AppComponent implements OnInit{
   }
   async checkAuth(route = '/'): Promise<void> {
     if (localStorage.getItem('api_token') === null) {
-      if(!route.includes('terminal') && !route.includes('monitor')) {
         this.router.navigate(['/login']);
-      }
-    } else {
-      if(route === '/') {
-        if(this.sessions.length > 0) {
-          this.router.navigate(['room/session/' + this.sessions[0].id]);
-        } else {
-          this.router.navigate(['/room/list']);
-        }
-      }
     }
   }
 }

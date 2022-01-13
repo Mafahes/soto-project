@@ -47,12 +47,8 @@ export class Roles {
 }
 export class Routes {
   public static routeList = [
-    { path: 'admin/postpone', title: 'Причины отложения', icon: 'list_alt', line: false, access: [] },
-    { path: 'admin/over', title: 'Причины завершения', icon: 'list_alt', line: false, access: [] },
-    // { path: 'admin/redirect', title: 'Причины перенаправления', icon: 'list_alt', line: false, access: [] },
-    { path: 'admin/rooms', title: 'Залы', icon: 'list_alt', line: false, access: [] },
-    { path: 'admin/users', title: 'Пользователи', icon: 'list_alt', line: false, access: [] },
-    { path: 'admin/sounds', title: 'Озвучка', icon: 'list_alt', line: false, access: [] },
-    { path: 'admin/stats', title: 'Статистика', icon: 'list_alt', line: false, access: [] }
+    { path: 'dispatcher/brigade', title: 'Бригады', icon: 'list_alt', line: false, access: [] },
+    { path: 'dispatcher/cards', title: 'Карточки', icon: 'list_alt', line: false, access: [] },
+    { path: 'dispatcher/stat', title: 'Статистика', icon: 'list_alt', line: false, access: [] },
   ];
 }
