@@ -1,0 +1,153 @@
+<form [formGroup]="form">
+  <div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col-6">
+        <span class="title">Электронная карточка</span>
+      </div>
+      <div class="col-6">
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-6">
+        <div class="input-form-group">
+          <span>Источник получения информации</span>
+          <input formControlName="source"/>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-4">
+        <div class="input-form-group">
+          <span>Фамилия умершего</span>
+          <input formControlName="secondName"/>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="input-form-group">
+          <span>Имя умершего</span>
+          <input formControlName="firstName"/>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="input-form-group">
+          <span>Отчество умершего (при наличии)</span>
+          <input formControlName="patronymic"/>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-2">
+        <div class="input-form-group">
+          <span>Пол умершего</span>
+          <select formControlName="sex">
+            <option [value]="true">Мужчина</option>
+            <option [value]="false">Женщина</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="input-form-group">
+          <span>Возраст умершего</span>
+          <input formControlName="age" type="number"/>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-6">
+        <div class="input-form-group">
+          <span>Уникальный номер бирки прикрепленной санитаром к умершему</span>
+          <input formControlName="deathId"/>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-4">
+        <div class="input-form-group">
+          <span>Место смерти</span>
+          <ng-select [items]="arr" bindLabel="value" bindValue="a" ></ng-select>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="input-form-group">
+          <span>Адрес</span>
+          <input formControlName="address"/>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-5">
+        <div class="input-form-group">
+          <span>Телефон контактного лица</span>
+          <input formControlName="phoneContact"/>
+        </div>
+      </div>
+      <div class="col-5">
+        <div class="input-form-group">
+          <span>Второй телефон (при необходимости)</span>
+          <input formControlName="secondPhoneContact"/>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-5">
+        <div class="input-form-group">
+          <span>Номер паспорта умершего (при наличии)</span>
+          <input formControlName="passport"/>
+        </div>
+      </div>
+      <div class="col-5">
+        <div class="input-form-group">
+          <span>Дата выдачи паспорта умершего (при наличии)</span>
+          <input formControlName="passportDate" type="date"/>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-5">
+        <div class="input-form-group">
+          <span>Причина смерти/диагноз (при наличии)</span>
+          <input formControlName="cause" />
+        </div>
+      </div>
+      <div class="col-5">
+        <div class="input-form-group">
+          <span>Дата смерти (при наличии)</span>
+          <input formControlName="dateDeath" type="date"/>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="input-form-group">
+          <span>Отделение, согласно раскрепления</span>
+          <mat-radio-group class="d-flex flex-row" style="gap: 40px" aria-label="Select an option">
+            <mat-radio-button color="primary" value="1">Патологоанатомическое</mat-radio-button>
+            <mat-radio-button color="primary" value="2">Танатологическое</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-3">
+        <div class="input-form-group">
+          <span>Наименование отделения</span>
+          <ng-select [items]="arr" bindLabel="value" bindValue="a" ></ng-select>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-4">
+        <div class="input-form-group">
+          <span>Дежурная часть территориального ОВД</span>
+          <ng-select [items]="arr" bindLabel="value" bindValue="a" ></ng-select>
+        </div>
+      </div>
+    </div>
+    <div class="row my-5">
+      <div class="col-12">
+        <button>Создать наряд</button>
+      </div>
+    </div>
+  </div>
+
+</form>

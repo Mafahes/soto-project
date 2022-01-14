@@ -87,6 +87,7 @@ import { BrigadeComponent } from './pages/dispatcher/brigade/brigade.component';
 import { CartsComponent } from './pages/dispatcher/carts/carts.component';
 import { StatisticComponent } from './pages/dispatcher/statistic/statistic.component';
 import {NgxMapboxGLModule} from "ngx-mapbox-gl";
+import { AddCartComponent } from './pages/dispatcher/carts/add-cart/add-cart.component';
 
 registerLocaleData(localeRu, 'ru');
 const INTERCEPTOR_PROVIDER: Provider = {
@@ -123,7 +124,8 @@ export const MY_FORMATS = {
     ErrorPageComponent,
     BrigadeComponent,
     CartsComponent,
-    StatisticComponent
+    StatisticComponent,
+    AddCartComponent
   ],
   imports: [
     BrowserAnimationsModule,

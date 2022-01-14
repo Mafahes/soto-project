@@ -15,11 +15,13 @@
     flex-direction: column;
   }
   mat-checkbox, input[placeholder], mat-label, .ng-option-label {
-    font-family: "Inter", sans-serif !important;
+    font-family: HumanistRegular, sans-serif !important;
   }
   .ng2-smart-sort-link {
-    font-family: 'Inter', sans-serif !important;
-    color: #222b45 !important;
+    font-family: HumanistRegular, sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    color: #5D7A9F !important;
   }
   ng2-smart-table {
     border-radius: 5px;

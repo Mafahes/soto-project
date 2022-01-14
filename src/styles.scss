@@ -129,3 +129,21 @@ input, button, textarea {
 button:disabled {
   background-color: #adadad !important;
 }
+.ng-select .ng-select-container {
+  border: 1px solid black !important;
+  border-radius: 0;
+}
+.ng-select-container {
+  height: 70px !important;
+  input {
+    height: 57px !important;
+  }
+}
+.ng-value-label {
+
+}
+.mat-radio-label-content {
+  font-size: 18px;
+  font-family: HumanistRegular, sans-serif;
+  color: black;
+}

@@ -1,0 +1,27 @@
+.search-input {
+  background-image: url("/assets/images/search_icon.png");
+  background-repeat: no-repeat;
+  background-position: 3% 50%;
+  padding-left:50px !important;
+  border: 1px solid black;
+  border-radius: 0;
+  padding: 18px;
+  font-family: HumanistRegular, sans-serif;
+  font-size: 24px;
+}
+::ng-deep {
+  ng2-smart-table {
+    table {
+      background-color: #fafafa !important;
+    }
+  }
+  table-cell-view-mode {
+    div {
+      font-family: HumanistRegular, sans-serif;
+      font-size: 18px;
+    }
+  }
+}
+::placeholder {
+  font-family: HumanistRegular, sans-serif;
+}
