@@ -1,49 +1,38 @@
-export interface File {
-  id: number;
-  fileName: string;
-  fileSize: number;
-  fileType: number;
-  fullUrl: string;
-}
-
-export interface Avatar {
-  id: number;
-  fileId: number;
-  file: File;
-  dateAdd: Date;
+export interface Role {
+  id: string;
+  name: string;
+  normalizedName: string;
+  concurrencyStamp: string;
 }
 
 export interface User {
-  email: string;
   nummer: number;
-  userName: string;
-  secondName: string;
-  firstName: string;
-  patronymic: string;
-  isExpert: boolean;
-  nameBlog: string;
-  sex: boolean;
-  city: string;
-  country: string;
-  dateBirth: string;
-  status: string;
-  description: string;
-  dateAdd: Date;
+  dateBirt?: any;
+  secondName?: any;
+  firstName?: any;
+  patronymic?: any;
+  sex?: any;
+  dateBirth: Date;
+  description?: any;
+  city?: any;
   version: string;
   isDeleted: boolean;
   lastLogin: Date;
-  userCode: string;
   isOnline: boolean;
   roleId: string;
+  role: Role;
   lockoutEnabled: boolean;
-  instagram: string;
-  telegram: string;
-  facebook: string;
-  vk: string;
-  site: string;
-  countSubscribers: number;
-  countSubscribtions: number;
-  avatars: Avatar[];
-  normalizedUserName: string;
-  displayName: string;
+  uid?: any;
+  longitude?: number;
+  latitude?: number;
+  timestamp?: number;
+  accuracy?: number;
+  altitude?: number;
+  floor?: any;
+  heading?: number;
+  speed?: number;
+  speedAccuracy?: any;
+  isMocked?: any;
+  inits: string;
+  email: string;
 }

@@ -1,0 +1,33 @@
+button {
+  background-color: black;
+  border: 0;
+  border-radius: 0;
+  color: white;
+  font-size: 24px;
+  font-family: HumanistRegular, sans-serif;
+  padding: 15px 70px;
+}
+.dialog-container {
+  width: 800px;
+  .close-button {
+    background-color: black;
+    border-radius: 0;
+    border: 0;
+    padding: 5px 24px !important;
+  }
+  .add-button {
+    background-color: black;
+    border-radius: 0;
+    border: 0;
+    padding: 10px 24px !important;
+  }
+  .title {
+    font-size: 24px;
+    font-family: HumanistRegular, sans-serif;
+    color: black;
+  }
+  .line {
+    height: 1px;
+    background-color: #959595;
+  }
+}

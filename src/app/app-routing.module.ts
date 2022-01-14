@@ -6,6 +6,7 @@ import {ErrorPageComponent} from "./pages/error-page/error-page.component";
 import {BrigadeComponent} from "./pages/dispatcher/brigade/brigade.component";
 import {CartsComponent} from "./pages/dispatcher/carts/carts.component";
 import {AddCartComponent} from "./pages/dispatcher/carts/add-cart/add-cart.component";
+import {UsersComponent} from "./pages/admin/users/users.component";
 
 export class RouteList {
   static routes: Routes = [
@@ -15,6 +16,9 @@ export class RouteList {
         { path: 'brigade', pathMatch: 'full', component: BrigadeComponent },
         { path: 'carts', pathMatch: 'full', component: CartsComponent },
         { path: 'carts/add', pathMatch: 'full', component: AddCartComponent },
+      ]},
+    { path: 'admin', children: [
+        { path: 'users', pathMatch: 'full', component: UsersComponent }
       ]},
     { path: '**', redirectTo: 'error' },
     { path: 'error', component: ErrorPageComponent },

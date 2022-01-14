@@ -3,24 +3,6 @@
   font-family: HumanistRegular, sans-serif;
   color: black;
 }
-.input-form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  span {
-    color: #787878;
-    font-size: 18px;
-    font-family: HumanistRegular, sans-serif;
-  }
-  input, select {
-    border-radius: 0;
-    border: 1px solid black;
-    padding: 18px;
-    font-family: HumanistRegular, sans-serif;
-    font-size: 24px;
-    outline: transparent;
-  }
-}
 button {
   background-color: black;
   border: 0;

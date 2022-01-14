@@ -88,6 +88,9 @@ import { CartsComponent } from './pages/dispatcher/carts/carts.component';
 import { StatisticComponent } from './pages/dispatcher/statistic/statistic.component';
 import {NgxMapboxGLModule} from "ngx-mapbox-gl";
 import { AddCartComponent } from './pages/dispatcher/carts/add-cart/add-cart.component';
+import {UserDialogManageComponent, UserPanelsComponent, UsersComponent} from './pages/admin/users/users.component';
+import { ArchiveComponent } from './pages/admin/archive/archive.component';
+import {AngularSvgIconModule} from "angular-svg-icon";
 
 registerLocaleData(localeRu, 'ru');
 const INTERCEPTOR_PROVIDER: Provider = {
@@ -125,7 +128,11 @@ export const MY_FORMATS = {
     BrigadeComponent,
     CartsComponent,
     StatisticComponent,
-    AddCartComponent
+    AddCartComponent,
+    UsersComponent,
+    ArchiveComponent,
+    UserPanelsComponent,
+    UserDialogManageComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -192,7 +199,8 @@ export const MY_FORMATS = {
     UploaderModule,
     MatTreeModule,
     MatRadioModule,
-    ChartsModule
+    ChartsModule,
+    AngularSvgIconModule.forRoot()
   ],
   providers: [
     INTERCEPTOR_PROVIDER,

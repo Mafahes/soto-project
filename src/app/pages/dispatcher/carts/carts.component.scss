@@ -9,19 +9,6 @@
   font-family: HumanistRegular, sans-serif;
   font-size: 24px;
 }
-::ng-deep {
-  ng2-smart-table {
-    table {
-      background-color: #fafafa !important;
-    }
-  }
-  table-cell-view-mode {
-    div {
-      font-family: HumanistRegular, sans-serif;
-      font-size: 18px;
-    }
-  }
-}
 ::placeholder {
   font-family: HumanistRegular, sans-serif;
 }

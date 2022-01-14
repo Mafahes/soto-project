@@ -147,3 +147,36 @@ button:disabled {
   font-family: HumanistRegular, sans-serif;
   color: black;
 }
+
+ng2-smart-table {
+  table {
+    background-color: #fafafa !important;
+  }
+}
+table-cell-view-mode {
+  div {
+    font-family: HumanistRegular, sans-serif;
+    font-size: 18px;
+  }
+}
+svg-icon:hover {
+  cursor: pointer;
+}
+.input-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  span {
+    color: #787878;
+    font-size: 18px;
+    font-family: HumanistRegular, sans-serif;
+  }
+  & > input, select {
+    border-radius: 0 !important;
+    border: 1px solid black !important;
+    padding: 18px !important;
+    font-family: HumanistRegular, sans-serif !important;
+    font-size: 24px !important;
+    outline: transparent !important;
+  }
+}

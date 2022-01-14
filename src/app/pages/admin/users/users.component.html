@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <div class="row my-5">
+    <div class="col-6"></div>
+    <div class="col-6">
+      <button class="w-100" (click)="triggerDialog('add', null)">Добавить нового пользователя</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <ng2-smart-table [source]="source" [settings]="settings"></ng2-smart-table>
+    </div>
+  </div>
+</div>
