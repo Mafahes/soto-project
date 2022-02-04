@@ -60,14 +60,6 @@ export class AppComponent implements OnInit{
     }
     this.router.events.subscribe(async (e) => {
       if (e instanceof NavigationEnd) {
-        if(e.url.includes('/room/session/')) {
-          this.initialized = false;
-          await this.signalR.startConnection();
-          this.initialized = true;
-        } else {
-          await this.signalR.dropConnection();
-        }
-        console.log(e.url);
         this.checkAuth(e.url);
         this.route = e.url;
       }

@@ -1,0 +1,18 @@
+<form [formGroup]="form">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 mt-3">
+        <button routerLink="/admin/vehicle">Назад</button>
+      </div>
+      <div class="col-12 mt-3 d-flex flex-column" style="gap: 15px">
+        <span>Автомобиль</span>
+        <ng-select [items]="vehicle.data" *ngIf="!!vehicle" bindLabel="name" bindValue="id"></ng-select>
+        <input formControlName="name" placeholder="Наименование"/>
+        <input formControlName="code" placeholder="Код"/>
+      </div>
+      <div class="col-12 mt-3">
+        <button>Создать</button>
+      </div>
+    </div>
+  </div>
+</form>

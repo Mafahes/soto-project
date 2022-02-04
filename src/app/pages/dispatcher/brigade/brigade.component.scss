@@ -1,6 +1,14 @@
 .main-wrapper {
   height: 93vh;
 }
+button {
+  font-family: HumanistRegular, sans-serif;
+  color: white;
+  border: 0;
+  padding: 8px 64px;
+  background-color: black;
+}
+
 ::ng-deep {
   mgl-map {
     height: 100%;

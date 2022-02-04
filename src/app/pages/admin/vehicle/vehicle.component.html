@@ -1,0 +1,12 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 mt-3">
+      <button routerLink="/admin/vehicle/new">Создать</button>
+    </div>
+    <div class="col-12 mt-5">
+      <ng2-smart-table *ngIf="!!vehObj" (custom)="onEvent($event)" [settings]="settings" [source]="vehObj.data">
+
+      </ng2-smart-table>
+    </div>
+  </div>
+</div>

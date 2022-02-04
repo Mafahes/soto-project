@@ -1,0 +1,23 @@
+<form [formGroup]="form">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 mt-3">
+        <button routerLink="/admin/vehicle">Назад</button>
+      </div>
+      <div class="col-12 mt-3 d-flex flex-column" style="gap: 15px">
+        <input formControlName="name" placeholder="Наименование"/>
+        <input formControlName="code" placeholder="Код"/>
+        <div class="d-flex flex-row w-100" style="gap: 15px">
+          <input class="w-50" formControlName="modelCarName" placeholder="Модель автомобиля"/>
+          <input class="w-50" formControlName="modelCarCode" placeholder="Код автомобиля"/>
+        </div>
+        <input formControlName="typeCarName" placeholder="Тип автомобиля"/>
+        <input formControlName="typeCarDescription" placeholder="Описание типа автомобиля"/>
+
+      </div>
+      <div class="col-12 mt-3">
+        <button (click)="createVehicle()">Создать</button>
+      </div>
+    </div>
+  </div>
+</form>

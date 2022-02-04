@@ -4,7 +4,8 @@ import {HttpClient} from '@angular/common/http';
 import {ToolsService} from './tools.service';
 import {Api, Status} from '../configuration';
 import * as _ from 'lodash';
-import {Role, User} from "../interfaces/User";
+import {Role, User} from '../interfaces/User';
+import { Vehicle, VehicleObject } from '../interfaces/vehicle';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,20 @@ export class ApiService {
   }
   getAllRoles(): Observable<Role[]> {
     return this.http.get<any>(`${Api.API_LINK}Auth/Roles`);
+  }
+  getAllVehicle(): Observable<VehicleObject> {
+    return this.http.get<any>(`${Api.API_LINK}api/Cars`);
+  }
+  getVehicleById(id): Observable<Vehicle> {
+    return this.http.get<any>(`${Api.API_LINK}api/Cars/${id}`);
+  }
+  createNewVehicle(data): Observable<VehicleObject> {
+    return this.http.post<any>(`${Api.API_LINK}api/Cars`, data);
+  }
+  updateNewVehicle(data): Observable<VehicleObject> {
+    return this.http.put<any>(`${Api.API_LINK}api/Cars`, data);
+  }
+  deleteVehicle(id): Observable<VehicleObject> {
+    return this.http.delete<any>(`${Api.API_LINK}api/Cars?id=${id}`);
   }
 }

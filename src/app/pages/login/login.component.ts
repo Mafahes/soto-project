@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
     this.api.logIn(this.form.value).subscribe(async (e) => {
       this.loading = false;
       localStorage.setItem('api_token', e.text);
+      this.router.navigate(['/']);
       // await this.app.parseUser();
       // let a = await this.app.getSessions();
       // if (a.length > 0) {
