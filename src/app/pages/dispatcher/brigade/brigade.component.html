@@ -16,18 +16,18 @@
         </div>
       </div>
     </div>
-    <div *ngFor="let i of [1, 1, 1, 1, 1, 1, 2, 3, 4, 5]" class="item px-3 d-flex flex-row">
+    <div *ngFor="let i of brigade" [routerLink]="'/dispatcher/brigade/' + i.id" class="item px-3 d-flex flex-row">
       <div class="w-25">
-        <span>Бригада #1</span>
+        <span>{{i.name}}</span>
       </div>
       <div class="w-25">
-        <span>Санитар: Сидоров В.В.</span>
+        <span>--</span>
       </div>
       <div class="w-25">
-        <span>У123МР</span>
+        <span>{{i?.car?.code || ''}}</span>
       </div>
       <div class="w-25">
-        <span>свободная бригада #1</span>
+        <span>--</span>
       </div>
     </div>
   </div>

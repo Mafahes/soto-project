@@ -23,6 +23,7 @@ export class RouteList {
     { path: 'dispatcher', children: [
         { path: 'brigade', pathMatch: 'full', component: BrigadeComponent },
         { path: 'brigade/new', pathMatch: 'full', component: NewBrigadeComponent },
+        { path: 'brigade/:id', pathMatch: 'full', component: NewBrigadeComponent },
         { path: 'carts', pathMatch: 'full', component: CartsComponent },
         { path: 'carts/add', pathMatch: 'full', component: AddCartComponent },
       ]},

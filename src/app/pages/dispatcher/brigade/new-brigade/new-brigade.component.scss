@@ -5,3 +5,14 @@ button {
   padding: 8px 64px;
   background-color: black;
 }
+input {
+  border-radius: 0 !important;
+  border: 1px solid black !important;
+  padding: 12px !important;
+  font-family: HumanistRegular, sans-serif !important;
+  font-size: 24px !important;
+  outline: transparent !important;
+}
+span {
+  font-family: HumanistRegular, sans-serif;
+}

@@ -25,7 +25,7 @@ export class UsersComponent implements OnInit {
       dateDeath: {
         title: 'ФИО',
         valuePrepareFunction: (cell, row) => {
-          return 'Пользователь';
+          return `${row.secondName || ''} ${row.firstName || ''} ${row.patronymic || ''}`;
         },
         filter: false
       },

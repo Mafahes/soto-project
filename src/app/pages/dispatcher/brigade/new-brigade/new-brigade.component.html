@@ -1,17 +1,21 @@
-<form [formGroup]="form">
+<form [formGroup]="form" *ngIf="users.length > 0 && !!vehicle">
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 mt-3">
-        <button routerLink="/admin/vehicle">Назад</button>
+        <button routerLink="/dispatcher/brigade">Назад</button>
       </div>
       <div class="col-12 mt-3 d-flex flex-column" style="gap: 15px">
         <span>Автомобиль</span>
-        <ng-select [items]="vehicle.data" *ngIf="!!vehicle" bindLabel="name" bindValue="id"></ng-select>
-        <input formControlName="name" placeholder="Наименование"/>
-        <input formControlName="code" placeholder="Код"/>
+        <ng-select formControlName="autoId" [items]="vehicle.data" *ngIf="!!vehicle" placeholder="Выберите автомобиль" bindLabel="name" bindValue="id"></ng-select>
+        <span>Наименование бригады</span>
+        <input formControlName="name" placeholder="Введите наименование (для таблицы)"/>
+        <span>Водители</span>
+        <ng-select [(ngModel)]="medicals" [ngModelOptions]="{standalone: true}" [items]="users" *ngIf="!!users.length" [multiple]="true" placeholder="Выберите водителей" bindLabel="firstName" bindValue="nummer"></ng-select>
+        <span>Медработники</span>
+        <ng-select [(ngModel)]="drivers" [ngModelOptions]="{standalone: true}" [items]="users" *ngIf="!!users.length" [multiple]="true" placeholder="Выберите медработников" bindLabel="firstName" bindValue="nummer"></ng-select>
       </div>
       <div class="col-12 mt-3">
-        <button>Создать</button>
+        <button (click)="createBrigade()">Применить</button>
       </div>
     </div>
   </div>
