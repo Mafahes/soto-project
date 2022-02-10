@@ -13,7 +13,7 @@ import {AppComponent} from "../../app.component";
 })
 export class LoginComponent implements OnInit {
   form = this.fb.group({
-    login: [null, Validators.compose([Validators.required, Validators.email])],
+    login: [null, Validators.required],
     password: [null, Validators.required]
   });
   loading = false;

@@ -7,13 +7,13 @@
           <div class="col-md-8">
             <p class="title">АВТОРИЗАЦИЯ</p>
             <p class="subtitle mb-5">Пожалуйста авторизуйтесь для получения доступа!</p>
-            <input [readonly]="loading" class="w-100" placeholder="E-Mail" formControlName="login" matInput>
+            <input [readonly]="loading" class="w-100" placeholder="Табельный номер" formControlName="login" matInput>
             <div class="my-5"></div>
             <input [readonly]="loading" class="w-100" placeholder="Пароль" type="password" formControlName="password" matInput>
             <div class="my-5"></div>
             <mat-progress-bar *ngIf="loading" mode="buffer"></mat-progress-bar>
             <div class="d-flex flex-row justify-content-center">
-              <button *ngIf="!loading" style="color: white !important;" mat-raised-button color="primary" (click)="submitLogin()" [disabled]="!form.valid">{{form.valid ? 'Войти' : 'Введите данные для авторизации'}}</button>
+              <button *ngIf="!loading && form.valid" style="color: white !important;" mat-raised-button color="primary" (click)="submitLogin()">Войти</button>
             </div>
           </div>
           <div class="col-md-2"></div>
