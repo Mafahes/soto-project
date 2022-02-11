@@ -24,7 +24,8 @@ export class NewVehicleComponent implements OnInit {
     modelCarName: ['', Validators.required],
     modelCarCode: ['', Validators.required],
     typeCarName: ['', Validators.required],
-    typeCarDescription: ['', Validators.required]
+    typeCarDescription: ['', Validators.required],
+    numberPlaces: null
   });
   ngOnInit(): void {
     this.arouter.paramMap.subscribe(async (e) => {

@@ -12,11 +12,12 @@
           <input class="w-50" formControlName="modelCarCode" placeholder="Код автомобиля"/>
         </div>
         <input formControlName="typeCarName" placeholder="Тип автомобиля"/>
+        <input formControlName="numberPlaces" type="number" placeholder="Количество мест"/>
         <input formControlName="typeCarDescription" placeholder="Описание типа автомобиля"/>
 
       </div>
       <div class="col-12 mt-3">
-        <button (click)="createVehicle()">Создать</button>
+        <button (click)="createVehicle()">{{form.get('id').value !== 0 ? 'Сохранить' : 'Создать'}}</button>
       </div>
     </div>
   </div>

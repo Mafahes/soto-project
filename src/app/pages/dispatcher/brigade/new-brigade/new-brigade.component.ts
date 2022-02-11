@@ -45,7 +45,7 @@ export class NewBrigadeComponent implements OnInit {
       this.api.getAllUsers(),
       this.api.getAllVehicle()
     ]).subscribe((e2) => {
-      this.users = e2[0].map((e) => ({...e, firstName: `${e.secondName || ''} ${e.firstName || ''} ${e.patronymic || ''}`})).filter(e => !!e.firstName.trim());
+      this.users = e2[0].map((e) => ({...e, firstName: `${e.secondName || ''} ${e.firstName || ''} ${e.patronymic || ''} - (${e.roleName})`})).filter(e => !!e.firstName.trim());
       this.vehicle = e2[1];
     });
   }

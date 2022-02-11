@@ -10,6 +10,7 @@ export interface User {
   dateBirt?: any;
   secondName?: any;
   firstName?: any;
+  roleName?: string;
   patronymic?: any;
   sex?: any;
   dateBirth: Date;

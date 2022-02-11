@@ -3,7 +3,8 @@
     <mgl-map
       [style]="'mapbox://styles/mafahes/ck7ytniby1cm81jlktlfxfuuh'"
       [zoom]="[9]"
-      [center]="[-74.5, 40]"
+      (load)="onMapLoad($event)"
+      [center]="[37.622887, 55.753283]"
     >
     </mgl-map>
   </div>
