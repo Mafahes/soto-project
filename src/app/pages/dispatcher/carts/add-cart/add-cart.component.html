@@ -36,16 +36,17 @@
       </div>
     </div>
     <div class="row mt-4">
-      <div class="col-2">
+      <div class="col-3">
         <div class="input-form-group">
           <span>Пол умершего</span>
           <select formControlName="sex">
+            <option [value]="null">Не определено</option>
             <option [value]="true">Мужчина</option>
             <option [value]="false">Женщина</option>
           </select>
         </div>
       </div>
-      <div class="col-2">
+      <div class="col-3">
         <div class="input-form-group">
           <span>Возраст умершего</span>
           <input formControlName="age" type="number"/>
@@ -56,18 +57,18 @@
       <div class="col-6">
         <div class="input-form-group">
           <span>Уникальный номер бирки прикрепленной санитаром к умершему</span>
-          <input formControlName="deathId"/>
+          <input readonly formControlName="deathId"/>
         </div>
       </div>
     </div>
     <div class="row mt-4">
-      <div class="col-4">
-        <div class="input-form-group">
-          <span>Место смерти</span>
-          <ng-select [items]="arr" bindLabel="value" bindValue="a" ></ng-select>
-        </div>
-      </div>
-      <div class="col-8">
+<!--      <div class="col-4">-->
+<!--        <div class="input-form-group">-->
+<!--          <span>Место смерти</span>-->
+<!--          <ng-select [items]="arr" bindLabel="value" bindValue="a" ></ng-select>-->
+<!--        </div>-->
+<!--      </div>-->
+      <div class="col-10">
         <div class="input-form-group">
           <span>Адрес</span>
           <input formControlName="address"/>
@@ -78,30 +79,30 @@
       <div class="col-5">
         <div class="input-form-group">
           <span>Телефон контактного лица</span>
-          <input formControlName="phoneContact"/>
+          <input type='text' prefix="+7 " [dropSpecialCharacters]="true" [showMaskTyped]="true" mask="(000) 000-00-00" formControlName="phoneContact"/>
         </div>
       </div>
       <div class="col-5">
         <div class="input-form-group">
           <span>Второй телефон (при необходимости)</span>
-          <input formControlName="secondPhoneContact"/>
+          <input type='text' prefix="+7 "  [dropSpecialCharacters]="true" [showMaskTyped]="true" mask="(000) 000-00-00" formControlName="secondPhoneContact"/>
         </div>
       </div>
     </div>
-    <div class="row mt-4">
-      <div class="col-5">
-        <div class="input-form-group">
-          <span>Номер паспорта умершего (при наличии)</span>
-          <input formControlName="passport"/>
-        </div>
-      </div>
-      <div class="col-5">
-        <div class="input-form-group">
-          <span>Дата выдачи паспорта умершего (при наличии)</span>
-          <input formControlName="passportDate" type="date"/>
-        </div>
-      </div>
-    </div>
+<!--    <div class="row mt-4">-->
+<!--      <div class="col-5">-->
+<!--        <div class="input-form-group">-->
+<!--          <span>Номер паспорта умершего (при наличии)</span>-->
+<!--          <input formControlName="passport"/>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-5">-->
+<!--        <div class="input-form-group">-->
+<!--          <span>Дата выдачи паспорта умершего (при наличии)</span>-->
+<!--          <input formControlName="passportDate" type="date"/>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
     <div class="row mt-4">
       <div class="col-5">
         <div class="input-form-group">
@@ -116,36 +117,39 @@
         </div>
       </div>
     </div>
-    <div class="row mt-4">
-      <div class="col-12">
-        <div class="input-form-group">
-          <span>Отделение, согласно раскрепления</span>
-          <mat-radio-group class="d-flex flex-row" style="gap: 40px" aria-label="Select an option">
-            <mat-radio-button color="primary" value="1">Патологоанатомическое</mat-radio-button>
-            <mat-radio-button color="primary" value="2">Танатологическое</mat-radio-button>
-          </mat-radio-group>
-        </div>
-      </div>
-    </div>
-    <div class="row mt-4">
-      <div class="col-3">
-        <div class="input-form-group">
-          <span>Наименование отделения</span>
-          <ng-select [items]="arr" bindLabel="value" bindValue="a" ></ng-select>
-        </div>
-      </div>
-    </div>
-    <div class="row mt-4">
-      <div class="col-4">
-        <div class="input-form-group">
-          <span>Дежурная часть территориального ОВД</span>
-          <ng-select [items]="arr" bindLabel="value" bindValue="a" ></ng-select>
-        </div>
-      </div>
-    </div>
+<!--    <div class="row mt-4">-->
+<!--      <div class="col-12">-->
+<!--        <div class="input-form-group">-->
+<!--          <span>Отделение, согласно раскрепления</span>-->
+<!--          <mat-radio-group class="d-flex flex-row" style="gap: 40px" aria-label="Select an option">-->
+<!--            <mat-radio-button color="primary" value="1">Патологоанатомическое</mat-radio-button>-->
+<!--            <mat-radio-button color="primary" value="2">Танатологическое</mat-radio-button>-->
+<!--          </mat-radio-group>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="row mt-4">-->
+<!--      <div class="col-3">-->
+<!--        <div class="input-form-group">-->
+<!--          <span>Наименование отделения</span>-->
+<!--          <ng-select [items]="arr" bindLabel="value" bindValue="a" ></ng-select>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="row mt-4">-->
+<!--      <div class="col-4">-->
+<!--        <div class="input-form-group">-->
+<!--          <span>Дежурная часть территориального ОВД</span>-->
+<!--          <ng-select [items]="arr" bindLabel="value" bindValue="a" ></ng-select>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
     <div class="row my-5">
       <div class="col-12">
-        <button>Создать наряд</button>
+        <div class="d-flex flex-column mb-3">
+          <span class="error" *ngFor="let i of errors">{{i}}</span>
+        </div>
+        <button (click)="createOrder()">Создать наряд</button>
       </div>
     </div>
   </div>

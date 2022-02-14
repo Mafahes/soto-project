@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LocalDataSource} from "ng2-smart-table";
 import {DatePipe} from "@angular/common";
+import {ApiService} from "../../../shared/services/api.service";
 
 @Component({
   selector: 'app-carts',
@@ -9,24 +10,6 @@ import {DatePipe} from "@angular/common";
 })
 export class CartsComponent implements OnInit {
   source: LocalDataSource;
-  obj = {
-    "id": 1,
-    "source": "string",
-    "secondName": "string",
-    "firstName": "string",
-    "patronymic": "string",
-    "sex": true,
-    "age": 0,
-    "deathId": "string",
-    "address": "string",
-    "phoneContact": "string",
-    "secondPhoneContact": "string",
-    "passport": "string",
-    "passportDate": "2022-01-13T11:07:20.948Z",
-    "cause": "string",
-    "dateDeath": "2022-01-13T11:07:20.948Z",
-    "isDelete": true
-  }
   settings = {
     actions: false,
     columns: {
@@ -44,22 +27,16 @@ export class CartsComponent implements OnInit {
       username: {
         title: 'Диспетчер',
         valuePrepareFunction: (cell, row) => {
-          return 'Петров Владимир Александрович';
+          return '-';
         },
         filter: false
       },
       source: {
         title: 'Источник',
-        valuePrepareFunction: (cell, row) => {
-          return 'Звонок';
-        },
         filter: false
       },
       deathId: {
         title: 'Источник',
-        valuePrepareFunction: (cell, row) => {
-          return 'Ношин Иван Иванович';
-        },
         filter: false
       },
       sex: {
@@ -76,11 +53,12 @@ export class CartsComponent implements OnInit {
     }
   };
   constructor(
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private api: ApiService
   ) {
-    this.source = new LocalDataSource([
-      this.obj, this.obj, this.obj, this.obj, this.obj, this.obj, this.obj, this.obj, this.obj, this.obj, this.obj, this.obj, this.obj
-    ]);
+    this.api.getOrders().subscribe((e) => {
+      this.source = new LocalDataSource(e.data);
+    });
   }
 
   ngOnInit(): void {

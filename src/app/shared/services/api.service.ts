@@ -8,6 +8,7 @@ import {Role, User} from '../interfaces/User';
 import { Vehicle, VehicleObject } from '../interfaces/vehicle';
 import { map } from 'rxjs/operators';
 import { Brigade, BrigadeObject } from '../interfaces/brigade';
+import {CartObject} from "../interfaces/cart";
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,15 @@ export class ApiService {
   }
   addUser(data): Observable<any> {
     return this.http.post<any>(`${Api.API_LINK}api/user/add`, data);
+  }
+  getOrders(): Observable<CartObject> {
+    return this.http.get<any>(`${Api.API_LINK}api/Orders`);
+  }
+  createOrder(data): Observable<any> {
+    return this.http.post<any>(`${Api.API_LINK}api/Orders`, data);
+  }
+  validateOrder(data): Observable<any> {
+    return this.http.post<any>(`${Api.API_LINK}api/Orders/validate`, data);
   }
   updateUser(data): Observable<any> {
     return this.http.put<any>(`${Api.API_LINK}api/users`, data);
