@@ -14,6 +14,32 @@ button {
     height: 100%;
     width: 100%;
   }
+  .mapboxgl-popup-content {
+    padding: 0;
+    padding-top: 9px;
+  }
+  .popup {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    .status {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 0;
+      width: 170px;
+      min-width: 170px;
+      background-color: rgba(99, 150, 226, 0.76);
+      span {
+        text-align: center;
+      }
+    }
+     span {
+       padding: 0 10px;
+      font-family: HumanistRegular, sans-serif;
+      font-size: 18px;
+    }
+  }
 }
 .title {
   font-size: 24px;

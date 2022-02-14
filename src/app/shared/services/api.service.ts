@@ -9,6 +9,7 @@ import { Vehicle, VehicleObject } from '../interfaces/vehicle';
 import { map } from 'rxjs/operators';
 import { Brigade, BrigadeObject } from '../interfaces/brigade';
 import {CartObject} from "../interfaces/cart";
+import {CoordObject} from "../interfaces/coords";
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +70,9 @@ export class ApiService {
   }
   getBrigades(): Observable<BrigadeObject> {
     return this.http.get<any>(`${Api.API_LINK}api/Brigades`);
+  }
+  getCoords(): Observable<CoordObject[]> {
+    return this.http.get<CoordObject[]>(`${Api.API_LINK}api/Positions`);
   }
   getBrigadesById(id): Observable<Brigade> {
     return this.http.get<any>(`${Api.API_LINK}api/Brigades/${id}`);

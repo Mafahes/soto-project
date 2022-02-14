@@ -6,6 +6,25 @@
       (load)="onMapLoad($event)"
       [center]="[37.622887, 55.753283]"
     >
+      <ng-container *ngFor="let item of coord">
+        <mgl-marker
+          #myMarker
+          [lngLat]="[item.longitude, item.latitude]"
+        >
+          <img src="assets/images/car.png"/>
+        </mgl-marker>
+        <mgl-popup [marker]="myMarker">
+          <div class="popup">
+            <span>{{item.brigade.car.code}}</span>
+            <span>Бригада №{{item.brigade.id}}</span>
+            <span>Водитель: -</span>
+            <span>Санитар: -</span>
+            <div class="status">
+              <span>бригада в пути</span>
+            </div>
+          </div>
+        </mgl-popup>
+      </ng-container>
     </mgl-map>
   </div>
   <div style="height: 40%; overflow-y: auto; max-height: 100%" class="pt-4">

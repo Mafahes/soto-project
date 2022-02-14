@@ -3,6 +3,7 @@ import { ApiService } from '../../../shared/services/api.service';
 import { Brigade } from '../../../shared/interfaces/brigade';
 import {MapComponent} from "ngx-mapbox-gl";
 import {forkJoin} from "rxjs";
+import {CoordObject} from "../../../shared/interfaces/coords";
 
 @Component({
   selector: 'app-brigade',
@@ -16,10 +17,16 @@ export class BrigadeComponent implements OnInit {
   ) { }
   brigade: Brigade[] = [];
   map: MapComponent;
+  coord: CoordObject[] = [];
+  interval;
   onMapLoad(map): void {
     this.map = map;
   }
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    // this.interval = setInterval(async () => {
+    //   this.coord = await this.api.getCoords().toPromise();
+    // }, 100000);
+    this.coord = await this.api.getCoords().toPromise();
     this.api.getBrigades().subscribe((e) => {
       this.brigade = e.data;
     });
