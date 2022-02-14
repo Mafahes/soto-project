@@ -64,6 +64,9 @@ export class ApiService {
   updateBrigade(data): Observable<any> {
     return this.http.put<any>(`${Api.API_LINK}api/Brigades`, data);
   }
+  checkBrigadeMember(id): Observable<BrigadeObject> {
+    return this.http.get<any>(`${Api.API_LINK}api/Brigades/check-user/${id}`);
+  }
   getBrigades(): Observable<BrigadeObject> {
     return this.http.get<any>(`${Api.API_LINK}api/Brigades`);
   }

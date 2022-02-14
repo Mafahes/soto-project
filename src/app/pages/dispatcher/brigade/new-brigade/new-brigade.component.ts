@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { User } from '../../../../shared/interfaces/User';
 import { VehicleObject } from '../../../../shared/interfaces/vehicle';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-new-brigade',
@@ -17,7 +18,8 @@ export class NewBrigadeComponent implements OnInit {
     private api: ApiService,
     private fb: FormBuilder,
     private router: Router,
-    private arouter: ActivatedRoute
+    private arouter: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) { }
   form = this.fb.group({
     id: 0,
@@ -48,6 +50,12 @@ export class NewBrigadeComponent implements OnInit {
       this.users = e2[0].map((e) => ({...e, firstName: `${e.secondName || ''} ${e.firstName || ''} ${e.patronymic || ''} - (${e.roleName})`})).filter(e => !!e.firstName.trim());
       this.vehicle = e2[1];
     });
+  }
+  async checkUser(id: User): Promise<void> {
+    const state: any = await this.api.checkBrigadeMember(id.nummer).toPromise();
+    if (state.state === false) {
+      this.snackBar.open(`Внимание: ${id.firstName || '-'} ${id.patronymic} находится в другой бригаде!`, null, { duration: 1500 });
+    }
   }
   async createBrigade(): Promise<void> {
     if(this.form.get('id').value !== 0) {

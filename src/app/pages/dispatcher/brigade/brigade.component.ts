@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../../shared/services/api.service';
 import { Brigade } from '../../../shared/interfaces/brigade';
 import {MapComponent} from "ngx-mapbox-gl";
+import {forkJoin} from "rxjs";
 
 @Component({
   selector: 'app-brigade',
@@ -23,5 +24,4 @@ export class BrigadeComponent implements OnInit {
       this.brigade = e.data;
     });
   }
-
 }
