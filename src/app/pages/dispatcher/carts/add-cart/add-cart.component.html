@@ -149,7 +149,7 @@
         <div class="d-flex flex-column mb-3">
           <span class="error" *ngFor="let i of errors">{{i}}</span>
         </div>
-        <button (click)="createOrder()">Создать наряд</button>
+        <button (click)="createOrder()">{{id === 0 ? 'Создать' : 'Изменить'}} наряд</button>
       </div>
     </div>
   </div>

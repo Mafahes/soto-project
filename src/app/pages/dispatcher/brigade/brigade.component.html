@@ -3,6 +3,7 @@
     <mgl-map
       [style]="'mapbox://styles/mafahes/ck7ytniby1cm81jlktlfxfuuh'"
       [zoom]="[9]"
+      (move)="onMapChange($event)"
       (load)="onMapLoad($event)"
       [center]="[37.622887, 55.753283]"
     >
@@ -11,7 +12,7 @@
           #myMarker
           [lngLat]="[item.longitude, item.latitude]"
         >
-          <img src="assets/images/car.png"/>
+          <img src="assets/images/car.png" [style.transform]="'rotate(' + (item.heading - bearing) + 'deg)'"/>
         </mgl-marker>
         <mgl-popup [marker]="myMarker">
           <div class="popup">

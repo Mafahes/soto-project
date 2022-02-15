@@ -10,6 +10,7 @@ import {UsersComponent} from "./pages/admin/users/users.component";
 import { VehicleComponent } from './pages/admin/vehicle/vehicle.component';
 import { NewVehicleComponent } from './pages/admin/vehicle/new-vehicle/new-vehicle.component';
 import { NewBrigadeComponent } from './pages/dispatcher/brigade/new-brigade/new-brigade.component';
+import {ViewCartComponent} from "./pages/dispatcher/carts/view-cart/view-cart.component";
 
 export class RouteList {
   static routes: Routes = [
@@ -26,6 +27,8 @@ export class RouteList {
         { path: 'brigade/:id', pathMatch: 'full', component: NewBrigadeComponent },
         { path: 'carts', pathMatch: 'full', component: CartsComponent },
         { path: 'carts/add', pathMatch: 'full', component: AddCartComponent },
+        { path: 'carts/view/:id', pathMatch: 'full', component: ViewCartComponent },
+        // { path: 'carts/:id', pathMatch: 'full', component: AddCartComponent },
       ]},
     { path: 'admin', children: [
         { path: 'users', pathMatch: 'full', component: UsersComponent }

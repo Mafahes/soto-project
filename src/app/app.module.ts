@@ -94,6 +94,7 @@ import {AngularSvgIconModule} from "angular-svg-icon";
 import { VehicleComponent } from './pages/admin/vehicle/vehicle.component';
 import { NewVehicleComponent } from './pages/admin/vehicle/new-vehicle/new-vehicle.component';
 import { NewBrigadeComponent } from './pages/dispatcher/brigade/new-brigade/new-brigade.component';
+import { ViewCartComponent } from './pages/dispatcher/carts/view-cart/view-cart.component';
 
 registerLocaleData(localeRu, 'ru');
 const INTERCEPTOR_PROVIDER: Provider = {
@@ -138,7 +139,8 @@ export const MY_FORMATS = {
     UserDialogManageComponent,
     VehicleComponent,
     NewVehicleComponent,
-    NewBrigadeComponent
+    NewBrigadeComponent,
+    ViewCartComponent
   ],
   imports: [
     BrowserAnimationsModule,

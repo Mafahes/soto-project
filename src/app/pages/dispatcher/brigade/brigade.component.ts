@@ -16,16 +16,20 @@ export class BrigadeComponent implements OnInit {
     private api: ApiService
   ) { }
   brigade: Brigade[] = [];
-  map: MapComponent;
+  map: any;
   coord: CoordObject[] = [];
   interval;
+  bearing = 0;
   onMapLoad(map): void {
     this.map = map;
   }
+  onMapChange(e): void {
+    this.bearing = this.map.getBearing();
+  }
   async ngOnInit(): Promise<void> {
-    // this.interval = setInterval(async () => {
-    //   this.coord = await this.api.getCoords().toPromise();
-    // }, 100000);
+    this.interval = setInterval(async () => {
+      this.coord = await this.api.getCoords().toPromise();
+    }, 2000);
     this.coord = await this.api.getCoords().toPromise();
     this.api.getBrigades().subscribe((e) => {
       this.brigade = e.data;

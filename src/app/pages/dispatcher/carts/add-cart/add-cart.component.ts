@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {ApiService} from "../../../../shared/services/api.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {DatePipe} from "@angular/common";
+import {OrderById} from "../../../../shared/interfaces/OrderById";
 @Component({
   selector: 'app-add-cart',
   templateUrl: './add-cart.component.html',
@@ -12,7 +14,9 @@ export class AddCartComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private api: ApiService,
-    private router: Router
+    private router: Router,
+    private arouter: ActivatedRoute,
+    private datePipe: DatePipe
   ) { }
   form = this.fb.group({
     source: ['', Validators.required],
@@ -31,11 +35,26 @@ export class AddCartComponent implements OnInit {
   });
   validated = false;
   errors: string[];
+  id = 0;
   arr = [
     {value: 1, a: 0},
     {value: 2, a: 1}
   ];
   ngOnInit(): void {
+    this.arouter.paramMap.subscribe(async (e) => {
+      if (!!e.get('id') && e.get('id') !== 'add') {
+        // @ts-ignore
+        const a: OrderById = await this.api.getOrderById(e.get('id')).toPromise().catch((ev) => {
+          this.router.navigate(['/dispatcher/carts']);
+        });
+        this.form.patchValue({
+          ...a,
+          dateDeath: this.datePipe.transform(a.dateDeath, 'dd.mm.YYYY')
+        });
+        this.id = a.id;
+        console.log(a);
+      }
+    });
   }
   async createOrder(): Promise<void> {
     var dateDeath = new Date(this.form.value.dateDeath);

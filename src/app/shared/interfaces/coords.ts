@@ -42,4 +42,5 @@ export interface CoordObject {
   freeSpace: number;
   longitude: number;
   latitude: number;
+  heading: number;
 }

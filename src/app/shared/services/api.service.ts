@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 import { Brigade, BrigadeObject } from '../interfaces/brigade';
 import {CartObject} from "../interfaces/cart";
 import {CoordObject} from "../interfaces/coords";
+import {OrderById} from "../interfaces/OrderById";
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,9 @@ export class ApiService {
   }
   getOrders(): Observable<CartObject> {
     return this.http.get<any>(`${Api.API_LINK}api/Orders`);
+  }
+  getOrderById(id): Observable<OrderById> {
+    return this.http.get<OrderById>(`${Api.API_LINK}api/Orders/${id}`);
   }
   createOrder(data): Observable<any> {
     return this.http.post<any>(`${Api.API_LINK}api/Orders`, data);
