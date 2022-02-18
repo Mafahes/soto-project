@@ -31,7 +31,7 @@ export interface User {
   email: string;
 }
 
-export interface Datum {
+export interface Cart {
   id: number;
   user: User;
   source: string;
@@ -62,7 +62,7 @@ export interface CartObject {
   totalRecords: number;
   nextPage?: any;
   previousPage?: any;
-  data: Datum[];
+  data: Cart[];
   succeeded: boolean;
   errors?: any;
   message?: any;

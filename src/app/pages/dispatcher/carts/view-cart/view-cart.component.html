@@ -1,1 +1,61 @@
-<p>view-cart works!</p>
+<div class="container-fluid">
+  <div class="row mt-5" *ngIf="!!order">
+    <div class="col-12 col-lg-6 d-flex flex-column" style="gap: 30px">
+      <div class="control" routerLink="/dispatcher/carts">
+        <svg-icon src="assets/icons/return.svg" [svgStyle]="{ 'width.px':7, 'height.px': 15 }"></svg-icon>
+        <span>назад</span>
+      </div>
+      <span class="title">Редактирование заявки №1</span>
+      <div class="d-flex flex-row label-row">
+        <span class="label">Время создания:</span>
+        <span class="label">{{order.dateAdd | date: 'dd.MM.yyyy HH:mm'}}</span>
+      </div>
+      <div class="d-flex flex-row label-row">
+        <span class="label">Передача наряда:</span>
+        <span class="label">-</span>
+      </div>
+      <span class="label">Состав бригады:</span>
+      <div class="input-control">
+        <span>Санитар</span>
+        <input readonly [(ngModel)]="sanitarField" placeholder="ФИО"/>
+      </div>
+      <div class="input-control">
+        <span>Водитель</span>
+        <input readonly [(ngModel)]="driverField" placeholder="ФИО"/>
+      </div>
+      <div class="input-control">
+        <span>Номер автомобиля</span>
+        <input readonly [(ngModel)]="order.brigade.car.code" placeholder="ФИО"/>
+      </div>
+      <div class="d-flex flex-row label-row">
+        <span class="label">Принятие наряда:</span>
+        <span class="label">-</span>
+      </div>
+      <div class="d-flex flex-row label-row">
+        <span class="label">Прибытие к месту вызова:</span>
+        <span class="label">-</span>
+      </div>
+      <div class="d-flex flex-row label-row">
+        <span class="label">Окончание загрузки тела в автомобиль:</span>
+        <span class="label">-</span>
+      </div>
+      <div class="buttons-row">
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="history-card">
+        <span class="h-label">История изменений</span>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span class="panel-title">Заявка №1 изменена пользователем №123</span>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>---- DEVELOPMING ----</p>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>

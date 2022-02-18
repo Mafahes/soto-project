@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {LocalDataSource} from "ng2-smart-table";
+import {Component, Input, OnInit} from '@angular/core';
+import {LocalDataSource, ViewCell} from "ng2-smart-table";
 import {DatePipe} from "@angular/common";
 import {ApiService} from "../../../shared/services/api.service";
+import {UserPanelsComponent, UsersComponent} from "../../admin/users/users.component";
+import {User} from "../../../shared/interfaces/User";
+import {Cart} from "../../../shared/interfaces/cart";
 
 @Component({
   selector: 'app-carts',
@@ -49,6 +52,19 @@ export class CartsComponent implements OnInit {
       age: {
         title: 'Возраст',
         filter: false
+      },
+      panels: {
+        title: '',
+        filter: false,
+        renderComponent: CartPanelsComponent,
+        valuePrepareFunction: (row, cell) => {
+          return {
+            isCart: true,
+            path: '/dispatcher/carts/' + row.id,
+            data: row
+          };
+        },
+        type: 'custom'
       }
     }
   };
@@ -64,4 +80,26 @@ export class CartsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+}
+@Component({
+  selector: 'app-cart-panels',
+  styleUrls: ['./carts.component.scss'],
+  template: `<div class="d-flex flex-row justify-content-end" style="gap: 20px">
+    <svg-icon [routerLink]="'/dispatcher/carts/view/' + rowData.id" src="assets/icons/edit.svg" (click)="onEdit()" [svgStyle]="{ 'width.px':28 }"></svg-icon>
+  </div>`
+})
+export class CartPanelsComponent implements OnInit, ViewCell {
+  constructor(
+    private api: ApiService
+  ) {
+  }
+
+  @Input() value; // data from table
+  @Input() rowData: Cart;
+
+  ngOnInit(): void {
+    console.log(this.value);
+  }
+  onEdit(): void {
+  }
 }

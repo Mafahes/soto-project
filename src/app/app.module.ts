@@ -84,7 +84,7 @@ import { CounterPipePipe } from './shared/components/counter-pipe.pipe';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
 import {ChartsModule} from "ng2-charts";
 import { BrigadeComponent } from './pages/dispatcher/brigade/brigade.component';
-import { CartsComponent } from './pages/dispatcher/carts/carts.component';
+import {CartPanelsComponent, CartsComponent} from './pages/dispatcher/carts/carts.component';
 import { StatisticComponent } from './pages/dispatcher/statistic/statistic.component';
 import {NgxMapboxGLModule} from "ngx-mapbox-gl";
 import { AddCartComponent } from './pages/dispatcher/carts/add-cart/add-cart.component';
@@ -140,7 +140,8 @@ export const MY_FORMATS = {
     VehicleComponent,
     NewVehicleComponent,
     NewBrigadeComponent,
-    ViewCartComponent
+    ViewCartComponent,
+    CartPanelsComponent
   ],
   imports: [
     BrowserAnimationsModule,

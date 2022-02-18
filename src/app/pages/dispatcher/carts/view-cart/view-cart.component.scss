@@ -1,0 +1,70 @@
+.control {
+  &:hover {
+    cursor: pointer;
+  }
+  span {
+    font-size: 18px;
+    font-family: HumanistRegular, sans-serif;
+  }
+  display: flex;
+  flex-direction: row;
+  gap: 9px;
+}
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: HumanistBold, sans-serif;
+}
+.label-row {
+  gap: 20px;
+  .label:last-child {
+    color: #787878;
+  }
+}
+.label {
+  font-size: 24px;
+  font-family: HumanistRegular, sans-serif;
+}
+.input-control {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  span {
+    font-size: 18px;
+    font-family: HumanistRegular, sans-serif;
+    color: #787878;
+  }
+  input {
+    border: 1px solid #787878;
+    padding: 15px 11px;
+    border-radius: 0;
+    font-size: 24px;
+  }
+}
+::ng-deep {
+  .mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0) !important;
+  }
+  .mat-expansion-panel {
+    background: transparent !important;
+  }
+}
+.history-card {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  .h-label {
+    text-align: center;
+    font-family: HumanistBold, sans-serif;
+    font-size: 18px;
+  }
+  background: rgba(196, 196, 196, 0.35);
+  box-shadow: 1px 4px 5px rgba(0, 0, 0, 0.25);
+  padding: 20px 48px;
+}
+.panel-title {
+  font-size: 18px;
+  font-family: HumanistRegular, sans-serif;
+}
