@@ -129,7 +129,7 @@ input, button, textarea {
 button:disabled {
   background-color: #adadad !important;
 }
-.ng-select .ng-select-container {
+.light .ng-select .ng-select-container {
   border: 1px solid black !important;
   border-radius: 0;
 }
@@ -172,5 +172,95 @@ svg-icon:hover {
     font-family: HumanistRegular, sans-serif !important;
     font-size: 24px !important;
     outline: transparent !important;
+  }
+}
+.title {
+  font-size: 24px;
+  font-family: HumanistRegular, sans-serif;
+  color: black;
+}
+mat-toolbar {
+  &.dark {
+    background: linear-gradient(0.06deg, #26282C 0.35%, #35373B 192.77%) !important;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.72) !important;
+  }
+  span {
+    color: white !important;
+  }
+}
+.dark {
+  .title, .label, .h-label, .panel-title, .control {
+    color: white !important;
+  }
+  input:not([autocapitalize="off"]), .search-input {
+    background-color: #2d2f33 !important;
+    border: 1px solid #787878 !important;
+    color: white;
+  }
+  .search-input::placeholder {
+    color: white;
+  }
+  .ng-select .ng-select-container {
+    border-radius: 0;
+    border: 1px solid #787878 !important;
+  }
+  ng-select > div {
+    background-color: #2d2f33 !important;
+  }
+  .btn-line {
+    button {
+      color: #26282C !important;
+    }
+  }
+  mat-sidenav, .mat-list-item-content {
+    background: linear-gradient(0.06deg, #26282C 0.35%, #35373B 192.77%) !important;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0) !important;
+  }
+  .mat-sidenav-content {
+    background: linear-gradient(0.06deg, #26282C 0.35%, #35373B 192.77%) !important;
+  }
+  button:not(.exit) {
+    background-color: white !important;
+    color: black !important;
+  }
+  app-brigade {
+    span {
+      color: white;
+    }
+  }
+  app-new-brigade {
+    span:not(.ng-value-label) {
+      color: #787878 !important;
+    }
+    .ng-select:not([ng-reflect-multiple="true"]) span.ng-value-label, input {
+      color: white;
+    }
+  }
+  ng2-smart-table table {
+    table-cell-view-mode {
+      color: white !important;
+    }
+    path {
+      fill: white;
+    }
+    ng2-smart-table-title {
+      a {
+        color: white !important;
+      }
+    }
+    background-color: #2e3034 !important;
+    td {
+      border: 1px solid #55575a !important;
+    }
+    th {
+      border-top: 1px solid #55575a !important;
+      border-left: 1px solid #55575a !important;
+      border-right: 1px solid #55575a !important;
+    }
+  }
+  .ng2-smart-pagination li a {
+    background-color: #2e3034 !important;
+    border: 1px solid #55575a;
+    border-color: #55575a !important;
   }
 }

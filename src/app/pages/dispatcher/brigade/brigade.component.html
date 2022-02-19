@@ -42,13 +42,13 @@
         <span>{{i.name}}</span>
       </div>
       <div class="w-25">
-        <span>--</span>
+        <span>Санитар: {{i?.drivers | brigadeTableHelper: 'drivers'}}</span>
       </div>
       <div class="w-25">
         <span>{{i?.car?.code || ''}}</span>
       </div>
       <div class="w-25">
-        <span>--</span>
+        <span>{{i?.state | brigadeTableHelper: 'status'}}</span>
       </div>
     </div>
   </div>

@@ -17,11 +17,13 @@
   mat-checkbox, input[placeholder], mat-label, .ng-option-label {
     font-family: HumanistRegular, sans-serif !important;
   }
+  .light .ng2-smart-sort-link {
+    color: #5D7A9F !important;
+  }
   .ng2-smart-sort-link {
     font-family: HumanistRegular, sans-serif;
     font-size: 18px;
     font-weight: normal;
-    color: #5D7A9F !important;
   }
   ng2-smart-table {
     border-radius: 5px;

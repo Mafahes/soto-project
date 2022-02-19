@@ -14,23 +14,11 @@ export class MainRoutes {
   ];
 }
 export class Status {
-  public static statuses = [
-    { label: 'В работе', value: 'on_work' },
-    { label: 'Обработан', value: 'processed' },
-    { label: 'Ожидает обработку', value: 'deprecated' },
-    { label: 'Отмененный', value: 'canceled' },
-    { label: 'На редактировании', value: 'on_edit'},
-    { label: 'Завершен', value: 'published'}
-  ];
-  public static transportStatuses = [
-    { label: 'Ожидает обработку', value: 'on_processing' },
-    { label: 'В работе', value: 'on_work' },
-    { label: 'На согласовании', value: 'on_approve' },
-    { label: 'Согласовано', value: 'approved' },
-    { label: 'Завершенный', value: 'finished' },
-    { label: 'Отмененный', value: 'canceled' },
-    { label: 'В работе', value: 'on_work_porters_ready' },
-    { label: 'В работе у грузчиков', value: 'on_work_porters' },
+  public static brigadeStatus = [
+    { label: 'Свободная бригада', value: 0 },
+    { label: 'Бригада в пути', value: 1 },
+    { label: 'Пересменка', value: 2 },
+    { label: 'Пауза', value: 3 },
   ];
 }
 export class Roles {

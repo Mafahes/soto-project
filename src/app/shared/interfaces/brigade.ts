@@ -30,6 +30,7 @@ export interface Brigade {
   car: Car;
   drivers: Driver[];
   medicals: Medical[];
+  state: number;
 }
 
 export interface BrigadeObject {

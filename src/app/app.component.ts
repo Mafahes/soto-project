@@ -7,6 +7,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Session} from "./shared/interfaces/self";
 import {RouteList} from "./app-routing.module";
+import {StorageService} from "./shared/injectables/storage.service";
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit{
               private dialog: MatDialog,
               private snackBar: MatSnackBar,
               private api: ApiService,
+              private storage: StorageService,
               private router: Router) {}
   route = '';
   routes = RouteList.routes;
@@ -43,6 +45,9 @@ export class AppComponent implements OnInit{
     window.location.reload();
   }
   async ngOnInit(): Promise<void> {
+    this.storage.isDark$.subscribe((e) => {
+      console.log(e);
+    });
     if (!this.getApiType()) {
       localStorage.setItem('apiType', 'test');
       Api.API_LINK = ApiTypes.TEST;

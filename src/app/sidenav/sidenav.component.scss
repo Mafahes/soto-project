@@ -2,11 +2,13 @@
   height: 93%;
 }
 .fio-class {
-  color: black !important;
   font-size: 30px;
 }
+.light .fio-class {
+  color: black !important;
+}
 .btn-line {
-  gap: 47px;
+  gap: 32px;
   button {
     font-family: HumanistRegular, sans-serif;
     color: white;

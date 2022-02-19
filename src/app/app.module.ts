@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule, Provider} from '@angular/core';
+import {APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NgModule, Provider} from '@angular/core';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -82,20 +82,25 @@ import {MomentDateAdapter} from '@angular/material-moment-adapter';
 import { HeaderComponent } from './pages/header/header.component';
 import { CounterPipePipe } from './shared/components/counter-pipe.pipe';
 import { ErrorPageComponent } from './pages/error-page/error-page.component';
-import {ChartsModule} from "ng2-charts";
+import {ChartsModule} from 'ng2-charts';
 import { BrigadeComponent } from './pages/dispatcher/brigade/brigade.component';
 import {CartPanelsComponent, CartsComponent} from './pages/dispatcher/carts/carts.component';
 import { StatisticComponent } from './pages/dispatcher/statistic/statistic.component';
-import {NgxMapboxGLModule} from "ngx-mapbox-gl";
+import {NgxMapboxGLModule} from 'ngx-mapbox-gl';
 import { AddCartComponent } from './pages/dispatcher/carts/add-cart/add-cart.component';
 import {UserDialogManageComponent, UserPanelsComponent, UsersComponent} from './pages/admin/users/users.component';
 import { ArchiveComponent } from './pages/admin/archive/archive.component';
-import {AngularSvgIconModule} from "angular-svg-icon";
+import {AngularSvgIconModule} from 'angular-svg-icon';
 import { VehicleComponent } from './pages/admin/vehicle/vehicle.component';
 import { NewVehicleComponent } from './pages/admin/vehicle/new-vehicle/new-vehicle.component';
 import { NewBrigadeComponent } from './pages/dispatcher/brigade/new-brigade/new-brigade.component';
 import { ViewCartComponent } from './pages/dispatcher/carts/view-cart/view-cart.component';
-
+import { BrigadeTableHelperPipe } from './pages/dispatcher/brigade/brigade-table-helper.pipe';
+import {PreloadProvider} from './preloadData';
+// tslint:disable-next-line:typedef
+export function beforeInitFactory(provider: PreloadProvider) {
+  return () => provider.load();
+}
 registerLocaleData(localeRu, 'ru');
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -141,7 +146,8 @@ export const MY_FORMATS = {
     NewVehicleComponent,
     NewBrigadeComponent,
     ViewCartComponent,
-    CartPanelsComponent
+    CartPanelsComponent,
+    BrigadeTableHelperPipe
   ],
   imports: [
     BrowserAnimationsModule,
@@ -222,6 +228,8 @@ export const MY_FORMATS = {
       provide: MAT_DATE_RANGE_SELECTION_STRATEGY,
       useClass: DefaultMatCalendarRangeStrategy,
     },
+    PreloadProvider,
+    { provide: APP_INITIALIZER, useFactory: beforeInitFactory, deps: [PreloadProvider], multi: true }
   ],
   bootstrap: [AppComponent]
 })
