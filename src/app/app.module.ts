@@ -95,7 +95,7 @@ import { VehicleComponent } from './pages/admin/vehicle/vehicle.component';
 import { NewVehicleComponent } from './pages/admin/vehicle/new-vehicle/new-vehicle.component';
 import { NewBrigadeComponent } from './pages/dispatcher/brigade/new-brigade/new-brigade.component';
 import { ViewCartComponent } from './pages/dispatcher/carts/view-cart/view-cart.component';
-import { BrigadeTableHelperPipe } from './pages/dispatcher/brigade/brigade-table-helper.pipe';
+import { BrigadeTableHelperPipe } from './shared/pipes/brigade-table-helper.pipe';
 import {PreloadProvider} from './preloadData';
 // tslint:disable-next-line:typedef
 export function beforeInitFactory(provider: PreloadProvider) {

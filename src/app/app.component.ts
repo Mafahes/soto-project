@@ -65,7 +65,6 @@ export class AppComponent implements OnInit{
     }
     this.router.events.subscribe(async (e) => {
       if (e instanceof NavigationEnd) {
-        this.checkAuth(e.url);
         this.route = e.url;
       }
     });
@@ -86,10 +85,5 @@ export class AppComponent implements OnInit{
   exit(): void {
     localStorage.removeItem('api_token');
     this.router.navigate(['/login']);
-  }
-  async checkAuth(route = '/'): Promise<void> {
-    if (localStorage.getItem('api_token') === null) {
-        this.router.navigate(['/login']);
-    }
   }
 }

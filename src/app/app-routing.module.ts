@@ -11,17 +11,20 @@ import { VehicleComponent } from './pages/admin/vehicle/vehicle.component';
 import { NewVehicleComponent } from './pages/admin/vehicle/new-vehicle/new-vehicle.component';
 import { NewBrigadeComponent } from './pages/dispatcher/brigade/new-brigade/new-brigade.component';
 import {ViewCartComponent} from "./pages/dispatcher/carts/view-cart/view-cart.component";
+import { AuthGuard } from './shared/services/auth.guard';
+import { AppComponent } from './app.component';
 
 export class RouteList {
   static routes: Routes = [
-    { path: '', component: DashboardComponent },
+    { path: '', redirectTo: 'dispatcher/brigade', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
-    { path: 'admin', children: [
+    { path: 'admin', canActivate: [AuthGuard], children: [
         { path: 'vehicle', pathMatch: 'full', component: VehicleComponent },
         { path: 'vehicle/create', pathMatch: 'full', component: NewVehicleComponent },
         { path: 'vehicle/:id', pathMatch: 'full', component: NewVehicleComponent },
+        { path: 'users', pathMatch: 'full', component: UsersComponent }
       ]},
-    { path: 'dispatcher', children: [
+    { path: 'dispatcher', canActivate: [AuthGuard], children: [
         { path: 'brigade', pathMatch: 'full', component: BrigadeComponent },
         { path: 'brigade/new', pathMatch: 'full', component: NewBrigadeComponent },
         { path: 'brigade/:id', pathMatch: 'full', component: NewBrigadeComponent },
@@ -29,9 +32,6 @@ export class RouteList {
         { path: 'carts/add', pathMatch: 'full', component: AddCartComponent },
         { path: 'carts/view/:id', pathMatch: 'full', component: ViewCartComponent },
         // { path: 'carts/:id', pathMatch: 'full', component: AddCartComponent },
-      ]},
-    { path: 'admin', children: [
-        { path: 'users', pathMatch: 'full', component: UsersComponent }
       ]},
     { path: '**', redirectTo: 'error' },
     { path: 'error', component: ErrorPageComponent },

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Status} from "../../../shared/configuration";
+import {Status} from "../configuration";
 
 @Pipe({
   name: 'brigadeTableHelper'
