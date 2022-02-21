@@ -32,5 +32,8 @@ export class ViewCartComponent implements OnInit {
       }
     });
   }
-
+  async onDelete(): Promise<void> {
+    await this.api.deleteOrder(this.order.id).toPromise();
+    this.router.navigate(['/dispatcher/carts']);
+  }
 }

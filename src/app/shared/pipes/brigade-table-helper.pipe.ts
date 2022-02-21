@@ -16,6 +16,15 @@ export class BrigadeTableHelperPipe implements PipeTransform {
     if (args === 'order') {
       return Status.orderStatus[value];
     }
+    if (args === 'findByState2') {
+      return value.find((e) => e.orderInHistory.state === 2)?.dateAdd ?? '';
+    }
+    if (args === 'findByState3') {
+      return value.find((e) => e.orderInHistory.state === 3)?.dateAdd ?? '';
+    }
+    if (args === 'findByState4') {
+      return value.find((e) => e.orderInHistory.state === 4)?.dateAdd ?? '';
+    }
     return '';
   }
 

@@ -30,6 +30,9 @@ export class ApiService {
   getOrders(page = 1): Observable<CartObject> {
     return this.http.get<any>(`${Api.API_LINK}api/Orders?pageNumber=${page}`);
   }
+  deleteOrder(id): Observable<any> {
+    return this.http.delete<any>(`${Api.API_LINK}api/Orders?id=${id}`);
+  }
   getOrderById(id): Observable<OrderById> {
     return this.http.get<OrderById>(`${Api.API_LINK}api/Orders/${id}`).pipe(
       map((e) => {
