@@ -27,11 +27,29 @@ export class ApiService {
   addUser(data): Observable<any> {
     return this.http.post<any>(`${Api.API_LINK}api/user/add`, data);
   }
-  getOrders(): Observable<CartObject> {
-    return this.http.get<any>(`${Api.API_LINK}api/Orders`);
+  getOrders(page = 1): Observable<CartObject> {
+    return this.http.get<any>(`${Api.API_LINK}api/Orders?pageNumber=${page}`);
   }
   getOrderById(id): Observable<OrderById> {
-    return this.http.get<OrderById>(`${Api.API_LINK}api/Orders/${id}`);
+    return this.http.get<OrderById>(`${Api.API_LINK}api/Orders/${id}`).pipe(
+      map((e) => {
+        return {
+          ...e,
+          history: e.history.map((e2, i) => {
+            return {
+              ...e2,
+              diff: Object.keys((i > 0 ? e.history[i - 1].orderInHistory : e)).reduce((diff, key) => {
+                if((i > 0 ? e.history[i - 1].orderInHistory : e)[key] === e2.orderInHistory[key]) return diff;
+                return {
+                  ...diff,
+                  [key]: e2.orderInHistory[key]
+                };
+              }, {})
+            };
+          })
+        };
+      })
+    );
   }
   createOrder(data): Observable<any> {
     return this.http.post<any>(`${Api.API_LINK}api/Orders`, data);

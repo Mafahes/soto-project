@@ -251,6 +251,7 @@ export interface History {
   description: string;
   dateAdd: Date;
   dateUpdate: Date;
+  diff: any;
 }
 
 export interface OrderById {

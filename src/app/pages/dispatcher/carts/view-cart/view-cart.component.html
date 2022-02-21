@@ -46,13 +46,19 @@
       <div class="history-card">
         <span class="h-label">История изменений</span>
         <mat-accordion>
-          <mat-expansion-panel>
+          <mat-expansion-panel *ngFor="let i of order.history">
             <mat-expansion-panel-header>
               <mat-panel-title>
-                <span class="panel-title">Заявка №1 изменена пользователем №123</span>
+                <span class="panel-title">{{i.description}}</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <p>---- DEVELOPMING ----</p>
+            <p class="history-label">{{i.dateAdd | date: 'dd.MM.yyyy в HH:mm'}}</p>
+            <p class="history-label" *ngIf="i.diff.hasOwnProperty('state')">Статус изменен на: {{i.diff.state | brigadeTableHelper: 'order'}}</p>
+            <p class="history-label" *ngIf="i.diff.hasOwnProperty('brigadeId')">Изменена бригада</p>
+            <p class="history-label" *ngIf="i.diff.hasOwnProperty('firstName')">Изменено Имя: {{i.diff.firstName}}</p>
+            <p class="history-label" *ngIf="i.diff.hasOwnProperty('secondName')">Изменена Фамилия: {{i.diff.secondName}}</p>
+            <p class="history-label" *ngIf="i.diff.hasOwnProperty('patronymic')">Изменено Отчество: {{i.diff.patronymic}}</p>
+
           </mat-expansion-panel>
         </mat-accordion>
       </div>

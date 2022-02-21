@@ -13,6 +13,9 @@ export class BrigadeTableHelperPipe implements PipeTransform {
     if (args === 'status') {
       return Status.brigadeStatus.find((e) => e.value === value).label || '-';
     }
+    if (args === 'order') {
+      return Status.orderStatus[value];
+    }
     return '';
   }
 

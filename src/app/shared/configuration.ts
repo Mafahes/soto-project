@@ -20,6 +20,7 @@ export class Status {
     { label: 'Пересменка', value: 2 },
     { label: 'Пауза', value: 3 },
   ];
+  public static orderStatus = ["Новая", "Не подтверждена", "Принята", "Прибыл на место", "Следует в морг", "Сдал в морг", "Отклонена"]
 }
 export class Roles {
   public static roleList = [

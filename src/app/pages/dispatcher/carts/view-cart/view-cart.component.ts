@@ -22,6 +22,7 @@ export class ViewCartComponent implements OnInit {
     this.arouter.paramMap.subscribe(async (e) => {
       if (!!e.get('id')) {
         this.order = await this.api.getOrderById(e.get('id')).toPromise();
+        console.log(this.order);
         if (!this.order) {
           this.router.navigate(['/dispatcher/carts']);
         } else {

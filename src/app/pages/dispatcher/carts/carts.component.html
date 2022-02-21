@@ -12,7 +12,12 @@
   </div>
   <div class="row">
     <div class="col-12">
+      <div class="d-none">
+        <div *ngFor="let i of pages | paginate: { itemsPerPage: 1, currentPage: currentPage}"></div>
+      </div>
       <ng2-smart-table [source]="source" [settings]="settings"></ng2-smart-table>
+      <div class="my-3"></div>
+      <pagination-controls [nextLabel]="'Далее'" [previousLabel]="'Назад'" (pageChange)="onPageChange($event)"></pagination-controls>
     </div>
   </div>
 </div>

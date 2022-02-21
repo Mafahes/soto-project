@@ -15,6 +15,10 @@ export class CartsComponent implements OnInit {
   source: LocalDataSource;
   settings = {
     actions: false,
+    pager: {
+      display: true,
+      perPage: 10
+    },
     columns: {
       id: {
         title: '№',
@@ -68,15 +72,27 @@ export class CartsComponent implements OnInit {
       }
     }
   };
+  pages = [];
+  currentPage = 1;
   constructor(
     private datePipe: DatePipe,
     private api: ApiService
   ) {
     this.api.getOrders().subscribe((e) => {
+      this.pages = [];
+      for(var i = 0; i < e.totalPages; i++) {
+        this.pages.push(i + 1);
+      }
+      console.log(this.pages);
+      console.log(Array.from(String(e.pageSize), Number));
       this.source = new LocalDataSource(e.data);
     });
   }
-
+  async onPageChange(e): Promise<void> {
+    const ord = await this.api.getOrders(e).toPromise();
+    this.currentPage = e;
+    this.source = new LocalDataSource(ord.data);
+  }
   ngOnInit(): void {
   }
 

@@ -188,7 +188,21 @@ mat-toolbar {
     color: white !important;
   }
 }
+.ngx-pagination {
+  padding: 0;
+}
+.light {
+  .history-label {
+    color: black;
+  }
+}
 .dark {
+  .ngx-pagination a:hover, .ngx-pagination button:hover {
+    background: #e6e6e638;
+  }
+  .ngx-pagination a, .ngx-pagination button, .history-label {
+    color: white !important;
+  }
   .title, .label, .h-label, .panel-title, .control {
     color: white !important;
   }
