@@ -1,5 +1,11 @@
 <div class="main-wrapper d-flex flex-column">
-  <div style="height: 60%">
+  <div style="height: 60%; position: relative">
+    <div class="filter-container">
+      <mat-radio-group (change)="onFilterChange($event)" aria-label="Select an option" class="radio-filter">
+        <mat-radio-button [value]="null">Все</mat-radio-button>
+        <mat-radio-button *ngFor="let i of statuses; let id = index" [value]="id">{{i.label}}</mat-radio-button>
+      </mat-radio-group>
+    </div>
     <mgl-map
       [style]="'mapbox://styles/mafahes/ck7ytniby1cm81jlktlfxfuuh'"
       [zoom]="[9]"
@@ -12,16 +18,21 @@
           #myMarker
           [lngLat]="[item.longitude, item.latitude]"
         >
-          <img src="assets/images/car.png" [style.transform]="'rotate(' + (item.heading - bearing) + 'deg)'"/>
+          <div class="d-flex flex-column map-icon align-items-center">
+            <span class="spaces">{{item.space - item.freeSpace}}/{{item.space}}</span>
+            <img [src]="'assets/icons/map_icon_' + item.brigade.state + '.svg'" [style.transform]="'rotate(' + (item.heading - bearing) + 'deg)'"/>
+          </div>
         </mgl-marker>
         <mgl-popup [marker]="myMarker">
           <div class="popup">
             <span>{{item.brigade.car.code}}</span>
             <span>Бригада №{{item.brigade.id}}</span>
-            <span>Водитель: -</span>
-            <span>Санитар: -</span>
-            <div class="status">
-              <span>бригада в пути</span>
+            <span>Активные заявки:</span>
+            <div class="orders-list">
+              <div *ngFor="let i of item.orders">
+                <span>Наряд №{{i.id}}</span>
+                <span [routerLink]="'/dispatcher/carts/view/' + i.id">Перейти</span>
+              </div>
             </div>
           </div>
         </mgl-popup>

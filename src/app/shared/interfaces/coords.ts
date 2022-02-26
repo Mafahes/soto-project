@@ -83,11 +83,15 @@ export interface Brigade {
   latitude?: any;
   heading?: any;
 }
-
+export interface OrderCoord {
+  id: number;
+}
 export interface CoordObject {
   brigade: Brigade;
   freeSpace: number;
   longitude: number;
   latitude: number;
   heading: number;
+  space: number;
+  orders: OrderCoord[];
 }

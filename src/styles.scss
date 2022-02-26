@@ -195,8 +195,29 @@ mat-toolbar {
   .history-label {
     color: black;
   }
+  .mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+    background-color: black;
+  }
+  .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: black;
+  }
 }
 .dark {
+  .mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+    background-color: white;
+  }
+  .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: white;
+  }
+  .mat-radio-label-content {
+    color: white !important;
+  }
+  .mapboxgl-popup-content, .filter-container, .mapboxgl-popup-close-button {
+    background-color: #26282C !important;
+  }
+  .mapboxgl-popup-close-button {
+    background-color: #787878 !important;
+  }
   .ngx-pagination a:hover, .ngx-pagination button:hover {
     background: #e6e6e638;
   }
@@ -233,7 +254,7 @@ mat-toolbar {
   .mat-sidenav-content {
     background: linear-gradient(0.06deg, #26282C 0.35%, #35373B 192.77%) !important;
   }
-  button:not(.exit) {
+  button:not(.exit, .mapboxgl-popup-close-button) {
     background-color: white !important;
     color: black !important;
   }

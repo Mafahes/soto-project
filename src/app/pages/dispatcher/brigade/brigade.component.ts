@@ -1,17 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { ApiService } from '../../../shared/services/api.service';
 import { Brigade } from '../../../shared/interfaces/brigade';
-import {MapComponent} from "ngx-mapbox-gl";
-import {forkJoin} from "rxjs";
-import {CoordObject} from "../../../shared/interfaces/coords";
+import {CoordObject} from '../../../shared/interfaces/coords';
+import {Status} from "../../../shared/configuration";
 
 @Component({
   selector: 'app-brigade',
   templateUrl: './brigade.component.html',
   styleUrls: ['./brigade.component.scss']
 })
-export class BrigadeComponent implements OnInit {
-
+export class BrigadeComponent implements OnInit, OnDestroy {
   constructor(
     private api: ApiService
   ) { }
@@ -20,19 +18,31 @@ export class BrigadeComponent implements OnInit {
   coord: CoordObject[] = [];
   interval;
   bearing = 0;
+  statuses = Status.brigadeStatus;
+  currentFilter = null;
   onMapLoad(map): void {
     this.map = map;
   }
   onMapChange(e): void {
     this.bearing = this.map.getBearing();
   }
+  async onFilterChange(i): Promise<void> {
+    this.currentFilter = i.value;
+    const src = await this.api.getCoords().toPromise();
+    this.coord = i.value === null ? src : src.filter((e) => e.brigade.state === i.value);
+  }
   async ngOnInit(): Promise<void> {
     this.interval = setInterval(async () => {
-      this.coord = await this.api.getCoords().toPromise();
-    }, 2000);
-    this.coord = await this.api.getCoords().toPromise();
+      const src = await this.api.getCoords().toPromise();
+      this.coord = this.currentFilter === null ? src : src.filter((e) => e.brigade.state === this.currentFilter);
+    }, 222000);
+    const src = await this.api.getCoords().toPromise();
+    this.coord = this.currentFilter === null ? src : src.filter((e) => e.brigade.state === this.currentFilter);
     this.api.getBrigades().subscribe((e) => {
       this.brigade = e.data;
     });
+  }
+  ngOnDestroy(): void {
+    clearInterval(this.interval);
   }
 }

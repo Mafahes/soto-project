@@ -6,6 +6,7 @@ import { forkJoin } from 'rxjs';
 import { User } from '../../../../shared/interfaces/User';
 import { VehicleObject } from '../../../../shared/interfaces/vehicle';
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Brigades1c} from "../../../../shared/interfaces/brigades1c";
 
 @Component({
   selector: 'app-new-brigade',
@@ -23,13 +24,17 @@ export class NewBrigadeComponent implements OnInit {
   ) { }
   form = this.fb.group({
     id: 0,
-    name: ['', Validators.required],
-    autoId: null,
+    autoId: null
   });
   users: User[] = [];
+  driversSource: User[] = [];
+  medicalsSource: User[] = [];
+  brigade1c: Brigades1c[] = [];
+  selectedBrigade1c: Brigades1c;
   vehicle: VehicleObject;
   drivers: any[] = [];
   medicals: any[] = [];
+  loaded = false;
   ngOnInit(): void {
     this.arouter.paramMap.subscribe(async (e) => {
       if (!!e.get('id') && e.get('id') !== 'new') {
@@ -45,10 +50,15 @@ export class NewBrigadeComponent implements OnInit {
     });
     forkJoin([
       this.api.getAllUsers(),
-      this.api.getAllVehicle()
+      this.api.getAllVehicle(),
+      this.api.get1cBrigades()
     ]).subscribe((e2) => {
       this.users = e2[0].map((e) => ({...e, firstName: `${e.secondName || ''} ${e.firstName || ''} ${e.patronymic || ''} - (${e.roleName})`})).filter(e => !!e.firstName.trim());
+      this.driversSource = this.users.filter((e) => e.roleName === 'Водитель');
+      this.medicalsSource = this.users.filter((e) => e.roleName === 'Санитар');
       this.vehicle = e2[1];
+      this.brigade1c = e2[2];
+      this.loaded = true;
     });
   }
   async checkUser(id: User): Promise<void> {
@@ -62,7 +72,8 @@ export class NewBrigadeComponent implements OnInit {
       await this.api.updateBrigade({
         ...this.form.value,
         drivers: this.drivers.map((e) => ({ nummerUser: e })),
-        medicals: this.medicals.map((e) => ({ nummerUser: e }))
+        medicals: this.medicals.map((e) => ({ nummerUser: e })),
+        ...this.selectedBrigade1c
       }).toPromise();
       this.router.navigate(['/dispatcher/brigade']);
       return;
@@ -70,7 +81,9 @@ export class NewBrigadeComponent implements OnInit {
     await this.api.createBrigade({
       ...this.form.value,
       drivers: this.drivers.map((e) => ({ nummerUser: e })),
-      medicals: this.medicals.map((e) => ({ nummerUser: e }))
+      medicals: this.medicals.map((e) => ({ nummerUser: e })),
+      code: this.selectedBrigade1c.uid,
+      name: this.selectedBrigade1c.code
     }).toPromise();
     this.router.navigate(['/dispatcher/brigade']);
   }

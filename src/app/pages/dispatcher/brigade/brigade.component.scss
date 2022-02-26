@@ -8,8 +8,60 @@ button {
   padding: 8px 64px;
   background-color: black;
 }
-
+.spaces {
+  font-family: HumanistRegular, sans-serif;
+  font-size: 18px;
+  color: white;
+}
+.map-icon {
+  img {
+    margin-top: -5px;
+  }
+}
+.filter-container {
+  position: absolute;
+  width: 200px;
+  background-color: white;
+  z-index: 999;
+  top: 10px;
+  left: 10px;
+  padding: 10px;
+  .radio-filter {
+    display: flex;
+    flex-direction: column;
+  }
+}
 ::ng-deep {
+  .orders-list {
+    display: flex;
+    flex-direction: column;
+    max-height: 100px;
+    overflow-y: auto;
+    div {
+      border-left: 2px solid transparent;
+      &:hover {
+        background: rgba(196, 196, 196, 0.35);
+        border-left: 2px solid #B0B0B0;
+      }
+      padding: 6px 7px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      span:first-child {
+        padding: 0 !important;
+      }
+      span:last-child {
+        &:hover {
+          cursor: pointer;
+        }
+        font-size: 14px;
+      }
+    }
+  }
+  .mapboxgl-popup {
+    max-width: 270px !important;
+    width: 270px;
+  }
   mgl-map {
     height: 100%;
     width: 100%;

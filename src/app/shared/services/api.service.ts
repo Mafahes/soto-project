@@ -11,6 +11,7 @@ import { Brigade, BrigadeObject } from '../interfaces/brigade';
 import {CartObject} from "../interfaces/cart";
 import {CoordObject} from "../interfaces/coords";
 import {OrderById} from "../interfaces/OrderById";
+import {Brigades1c} from "../interfaces/brigades1c";
 
 @Injectable({
   providedIn: 'root'
@@ -30,27 +31,35 @@ export class ApiService {
   getOrders(page = 1): Observable<CartObject> {
     return this.http.get<any>(`${Api.API_LINK}api/Orders?pageNumber=${page}`);
   }
+  get1cBrigades(): Observable<Brigades1c[]> {
+    return this.http.get<Brigades1c[]>(`${Api.API_LINK}api/Brigades/1c`);
+  }
   deleteOrder(id): Observable<any> {
     return this.http.delete<any>(`${Api.API_LINK}api/Orders?id=${id}`);
   }
   getOrderById(id): Observable<OrderById> {
     return this.http.get<OrderById>(`${Api.API_LINK}api/Orders/${id}`).pipe(
       map((e) => {
-        return {
-          ...e,
-          history: e.history.map((e2, i) => {
-            return {
-              ...e2,
-              diff: Object.keys((i > 0 ? e.history[i - 1].orderInHistory : e)).reduce((diff, key) => {
-                if((i > 0 ? e.history[i - 1].orderInHistory : e)[key] === e2.orderInHistory[key]) return diff;
-                return {
-                  ...diff,
-                  [key]: e2.orderInHistory[key]
-                };
-              }, {})
-            };
-          })
-        };
+       try {
+         var obj = {
+           ...e,
+           history: e.history.map((e2, i) => {
+             return {
+               ...e2,
+               diff: Object.keys((i > 0 ? e.history[i - 1].orderInHistory : e)).reduce((diff, key) => {
+                 if((i > 0 ? e.history[i - 1].orderInHistory : e)[key] === e2.orderInHistory[key]) return diff;
+                 return {
+                   ...diff,
+                   [key]: e2.orderInHistory[key]
+                 };
+               }, {})
+             };
+           })
+         };
+         return obj;
+       } catch (e) {
+         return null;
+       }
       })
     );
   }

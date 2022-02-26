@@ -1,4 +1,4 @@
-<form [formGroup]="form" *ngIf="users.length > 0 && !!vehicle">
+<form [formGroup]="form" *ngIf="loaded">
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 mt-3">
@@ -8,11 +8,11 @@
         <span>Автомобиль</span>
         <ng-select formControlName="autoId" [items]="vehicle.data" *ngIf="!!vehicle" placeholder="Выберите автомобиль" bindLabel="name" bindValue="id"></ng-select>
         <span>Наименование бригады</span>
-        <input formControlName="name" placeholder="Введите наименование (для таблицы)"/>
+        <ng-select [(ngModel)]="selectedBrigade1c" [ngModelOptions]="{standalone: true}" [items]="brigade1c" placeholder="Название" bindLabel="code"></ng-select>
         <span>Водители</span>
-        <ng-select (add)="checkUser($event)" [(ngModel)]="drivers" [ngModelOptions]="{standalone: true}" [items]="users" *ngIf="!!users.length" [multiple]="true" placeholder="Выберите водителей" bindLabel="firstName" bindValue="nummer"></ng-select>
+        <ng-select (add)="checkUser($event)" [(ngModel)]="drivers" [ngModelOptions]="{standalone: true}" [items]="driversSource" [multiple]="true" placeholder="Выберите водителей" bindLabel="firstName" bindValue="nummer"></ng-select>
         <span>Медработники</span>
-        <ng-select (add)="checkUser($event)" [(ngModel)]="medicals" [ngModelOptions]="{standalone: true}" [items]="users" *ngIf="!!users.length" [multiple]="true" placeholder="Выберите медработников" bindLabel="firstName" bindValue="nummer"></ng-select>
+        <ng-select (add)="checkUser($event)" [(ngModel)]="medicals" [ngModelOptions]="{standalone: true}" [items]="medicalsSource" [multiple]="true" placeholder="Выберите медработников" bindLabel="firstName" bindValue="nummer"></ng-select>
       </div>
       <div class="col-12 mt-3">
         <button (click)="createBrigade()">Применить</button>
