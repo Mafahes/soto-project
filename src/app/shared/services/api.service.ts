@@ -49,7 +49,7 @@ export class ApiService {
        try {
          var obj = {
            ...e,
-           history: e.history.map((e2, i) => {
+           history: e.history.filter((e2) => !!e2.orderInHistory).map((e2, i) => {
              return {
                ...e2,
                diff: Object.keys((i > 0 ? e.history[i - 1].orderInHistory : e)).reduce((diff, key) => {
@@ -64,6 +64,7 @@ export class ApiService {
          };
          return obj;
        } catch (e) {
+         console.log(e);
          return null;
        }
       })
