@@ -1,5 +1,6 @@
 export interface Car {
   id: number;
+  numberPlaces: number;
   user?: any;
   uid: string;
   name: string;
@@ -10,27 +11,79 @@ export interface Car {
   typeCarDescription: string;
 }
 
+export interface User {
+  nummer: number;
+  dateBirt?: any;
+  secondName: string;
+  firstName: string;
+  patronymic: string;
+  sex?: any;
+  dateBirth: Date;
+  description?: any;
+  city?: any;
+  version: string;
+  isDeleted: boolean;
+  lastLogin: Date;
+  isOnline: boolean;
+  roleName: string;
+  lockoutEnabled: boolean;
+  uid: string;
+  state: number;
+  inits: string;
+  email: string;
+}
+
 export interface Driver {
   id: number;
   brigadeId: number;
   nummerUser: number;
+  user: User;
+}
+
+export interface User2 {
+  nummer: number;
+  dateBirt?: any;
+  secondName: string;
+  firstName: string;
+  patronymic: string;
+  sex?: any;
+  dateBirth: Date;
+  description?: any;
+  city?: any;
+  version: string;
+  isDeleted: boolean;
+  lastLogin: Date;
+  isOnline: boolean;
+  roleName: string;
+  lockoutEnabled: boolean;
+  uid: string;
+  state: number;
+  inits: string;
+  email: string;
 }
 
 export interface Medical {
   id: number;
   brigadeId: number;
   nummerUser: number;
+  user: User2;
 }
 
 export interface Brigade {
+  state: number;
   id: number;
-  user?: any;
-  name: string;
+  uid: string;
+  code: string;
   autoId: number;
   car: Car;
   drivers: Driver[];
   medicals: Medical[];
-  state: number;
+  freeSpaces: number;
+  distance: number;
+  longitude?: any;
+  latitude?: any;
+  heading?: any;
+  name?: string;
 }
 
 export interface BrigadeObject {

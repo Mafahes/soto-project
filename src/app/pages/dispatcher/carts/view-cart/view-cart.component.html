@@ -5,7 +5,7 @@
         <svg-icon src="assets/icons/return.svg" [svgStyle]="{ 'width.px':7, 'height.px': 15 }"></svg-icon>
         <span>назад</span>
       </div>
-      <span class="title">Редактирование заявки №1</span>
+      <span class="title">Редактирование заявки №{{order.id || '-'}}</span>
       <div class="d-flex flex-row label-row">
         <span class="label">Время создания:</span>
         <span class="label">{{order.dateAdd | date: 'dd.MM.yyyy HH:mm'}}</span>
@@ -16,7 +16,7 @@
       </div>
       <span class="label">Состав бригады:</span>
       <div class="input-control">
-        <ng-select [items]="brigades" [(ngModel)]="selectedBrigade" placeholder="Выберите бригаду" bindValue="id" bindLabel="name"></ng-select>
+        <ng-select (change)="onBrigadeChange($event)" [items]="brigades" [(ngModel)]="selectedBrigade" placeholder="Выберите бригаду" bindValue="id" bindLabel="name"></ng-select>
         <span>Санитар</span>
         <input readonly [(ngModel)]="sanitarField" placeholder="ФИО"/>
       </div>
@@ -26,7 +26,7 @@
       </div>
       <div class="input-control">
         <span>Номер автомобиля</span>
-        <input readonly [(ngModel)]="order.brigade.car.code" placeholder="ФИО"/>
+        <input *ngIf="order?.brigade?.car?.code !== null" readonly [(ngModel)]="order.brigade.car.code" placeholder="ФИО"/>
       </div>
       <div class="d-flex flex-row label-row">
         <span class="label">Принятие наряда:</span>

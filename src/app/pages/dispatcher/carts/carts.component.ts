@@ -15,6 +15,7 @@ export class CartsComponent implements OnInit {
   source: LocalDataSource;
   settings = {
     actions: false,
+    noDataMessage: 'Нет данных',
     pager: {
       display: true,
       perPage: 10
