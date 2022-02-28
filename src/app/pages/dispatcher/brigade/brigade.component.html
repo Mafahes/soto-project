@@ -50,7 +50,7 @@
     </div>
     <div *ngFor="let i of brigade" [routerLink]="'/dispatcher/brigade/' + i.id" class="item px-3 d-flex flex-row">
       <div class="w-25">
-        <span>{{i.name}}</span>
+        <span>Бригада №{{i.id}}</span>
       </div>
       <div class="w-25">
         <span>Санитар: {{i?.drivers | brigadeTableHelper: 'drivers'}}</span>

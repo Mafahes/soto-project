@@ -39,6 +39,7 @@ export class NewBrigadeComponent implements OnInit {
     this.arouter.paramMap.subscribe(async (e) => {
       if (!!e.get('id') && e.get('id') !== 'new') {
         const val = await this.api.getBrigadesById(e.get('id')).toPromise();
+        const val2 = await this.api.get1cBrigades().toPromise();
         this.form.patchValue({
           id: val.id,
           name: val.name,
@@ -46,18 +47,18 @@ export class NewBrigadeComponent implements OnInit {
         });
         this.drivers = val.drivers.map((e2) => e2.nummerUser);
         this.medicals = val.medicals.map((e2) => e2.nummerUser);
+        this.brigade1c = val2;
+        this.selectedBrigade1c = val2.find((i) => i.code === val.code);
       }
     });
     forkJoin([
       this.api.getAllUsers(),
-      this.api.getAllVehicle(),
-      this.api.get1cBrigades()
+      this.api.getAllVehicle()
     ]).subscribe((e2) => {
       this.users = e2[0].map((e) => ({...e, firstName: `${e.secondName || ''} ${e.firstName || ''} ${e.patronymic || ''} - (${e.roleName})`})).filter(e => !!e.firstName.trim());
       this.driversSource = this.users.filter((e) => e.roleName === 'Водитель');
       this.medicalsSource = this.users.filter((e) => e.roleName === 'Санитар');
       this.vehicle = e2[1];
-      this.brigade1c = e2[2];
       this.loaded = true;
     });
   }
