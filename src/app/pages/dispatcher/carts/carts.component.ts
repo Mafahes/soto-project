@@ -24,7 +24,7 @@ export class CartsComponent implements OnInit {
         title: '№',
         filter: false
       },
-      dateDeath: {
+      dateAdd: {
         title: 'Дата и время',
         valuePrepareFunction: (cell, row) => {
           return this.datePipe.transform(cell, 'dd.MM.yyyy HH:mm');
@@ -39,10 +39,6 @@ export class CartsComponent implements OnInit {
         filter: false
       },
       source: {
-        title: 'Источник',
-        filter: false
-      },
-      deathId: {
         title: 'Источник',
         filter: false
       },

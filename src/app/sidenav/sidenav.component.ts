@@ -31,7 +31,6 @@ export class SidenavComponent implements OnInit {
       this.isDark = e;
     });
     this.onesignal.isSubscribe$.subscribe((e) => {
-      console.log(this.onesignal.userId);
       this.subscribed = e;
     });
   }

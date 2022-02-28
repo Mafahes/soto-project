@@ -25,6 +25,9 @@ export class ApiService {
   getAllUsers(): Observable<User[]> {
     return this.http.get<any>(`${Api.API_LINK}api/users/all`);
   }
+  getSelf(): Observable<User> {
+    return this.http.get<any>(`${Api.API_LINK}api/user/0`);
+  }
   addUser(data): Observable<any> {
     return this.http.post<any>(`${Api.API_LINK}api/user/add`, data);
   }
@@ -36,6 +39,9 @@ export class ApiService {
   }
   deleteOrder(id): Observable<any> {
     return this.http.delete<any>(`${Api.API_LINK}api/Orders?id=${id}`);
+  }
+  editOrder(data): Observable<any> {
+    return this.http.put<any>(`${Api.API_LINK}api/Orders`, data);
   }
   getOrderById(id): Observable<OrderById> {
     return this.http.get<OrderById>(`${Api.API_LINK}api/Orders/${id}`).pipe(

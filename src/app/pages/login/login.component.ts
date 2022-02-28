@@ -28,8 +28,13 @@ export class LoginComponent implements OnInit {
   async submitLogin(code = null): Promise<void> {
     this.loading = true;
     this.api.logIn(this.form.value).subscribe(async (e) => {
-      this.loading = false;
       localStorage.setItem('api_token', e.text);
+      var a = await this.api.getSelf().toPromise();
+      this.loading = false;
+      if (a.roleName !== 'Администратор' && a.roleName !== 'Менеджер') {
+        localStorage.removeItem('api_token');
+        return;
+      }
       this.router.navigate(['/dispatcher/brigade']);
       // await this.app.parseUser();
       // let a = await this.app.getSessions();

@@ -32,7 +32,8 @@ export class AddCartComponent implements OnInit {
     phoneContact: '',
     cause: '',
     dateDeath: '',
-    addInformation: ''
+    addInformation: '',
+    number: ''
   });
   validated = false;
   errors: string[];
