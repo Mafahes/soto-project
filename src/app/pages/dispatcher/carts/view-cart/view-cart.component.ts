@@ -21,11 +21,13 @@ export class ViewCartComponent implements OnInit {
   order: OrderById = null;
   sanitarField = '';
   driverField = '';
+  carPlade = '';
   brigades: Brigade[] = [];
   selectedBrigade;
   onBrigadeChange(e: Brigade): void {
     this.sanitarField = e.medicals.map((m) => `${m.user.secondName} ${m.user.firstName} ${m.user.patronymic}`).join(', ');
     this.driverField = e.drivers.map((m) => `${m.user.secondName} ${m.user.firstName} ${m.user.patronymic}`).join(', ');
+    this.carPlade = e.car.name;
   }
   ngOnInit(): void {
     this.arouter.paramMap.subscribe(async (e) => {
@@ -40,6 +42,7 @@ export class ViewCartComponent implements OnInit {
           try {
             this.sanitarField = this.order.brigade.medicals.map((m) => `${m.user.secondName} ${m.user.firstName} ${m.user.patronymic}`).join(', ');
             this.driverField = this.order.brigade.drivers.map((m) => `${m.user.secondName} ${m.user.firstName} ${m.user.patronymic}`).join(', ');
+            this.carPlade = this.order.brigade.car.name;
           } catch (e) {
           }
           const src = await this.api.getBrigades().toPromise();

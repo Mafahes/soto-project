@@ -70,12 +70,14 @@ export class NewBrigadeComponent implements OnInit {
   }
   async createBrigade(): Promise<void> {
     if(this.form.get('id').value !== 0) {
-      await this.api.updateBrigade({
+      var obj = {
         ...this.form.value,
         drivers: this.drivers.map((e) => ({ nummerUser: e })),
         medicals: this.medicals.map((e) => ({ nummerUser: e })),
         ...this.selectedBrigade1c
-      }).toPromise();
+      };
+      delete obj.uid;
+      await this.api.updateBrigade(obj).toPromise();
       this.router.navigate(['/dispatcher/brigade']);
       return;
     }

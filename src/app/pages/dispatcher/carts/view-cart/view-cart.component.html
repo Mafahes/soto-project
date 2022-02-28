@@ -26,7 +26,7 @@
       </div>
       <div class="input-control">
         <span>Номер автомобиля</span>
-        <input *ngIf="order?.brigade?.car?.code !== null" readonly [(ngModel)]="order.brigade.car.code" placeholder="ФИО"/>
+        <input readonly [(ngModel)]="carPlade" placeholder="ФИО"/>
       </div>
       <div class="d-flex flex-row label-row">
         <span class="label">Принятие наряда:</span>
