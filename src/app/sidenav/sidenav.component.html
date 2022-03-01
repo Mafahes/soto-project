@@ -7,7 +7,7 @@
     *ngIf="isHandset$ | async">
     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
   </button>
-  <span class="fio-class">Петров В.В.</span>
+  <span class="fio-class">{{(storage.user$ | async).roleName}}</span>
   <span class="example-spacer"></span>
   <div class="d-flex flex-row btn-line">
 <!--    <button routerLink="dispatcher/carts/add">-->

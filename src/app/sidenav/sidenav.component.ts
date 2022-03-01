@@ -41,7 +41,7 @@ export class SidenavComponent implements OnInit {
     public readonly onesignal: OneSignalService,
     private breakpointObserver: BreakpointObserver,
     private snackBar: MatSnackBar,
-    private storage: StorageService,
+    public storage: StorageService,
     private api: ApiService,
     public app: AppComponent) {
     (window as any).ngxOnesignal = this.onesignal;
