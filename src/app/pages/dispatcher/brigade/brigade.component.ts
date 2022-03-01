@@ -34,12 +34,12 @@ export class BrigadeComponent implements OnInit, OnDestroy {
   async onFilterChange(i): Promise<void> {
     this.currentFilter = i.value;
     const src = await this.api.getCoords().toPromise();
-    this.coord = i.value === null ? src : src.filter((e) => e.brigade.state === i.value);
+    this.coord = i.value === null ? src : i.value === 0 ? src.filter((e) => e.freeSpace > 0 || e.brigade.state === i.value) : src.filter((e) => e.brigade.state === i.value);
   }
   async ngOnInit(): Promise<void> {
     this.interval = setInterval(async () => {
       const src = await this.api.getCoords().toPromise();
-      this.coord = this.currentFilter === null ? src : src.filter((e) => e.brigade.state === this.currentFilter);
+      this.coord = this.currentFilter === null ? src : this.currentFilter === 0 ? src.filter((e) => e.freeSpace > 0 || e.brigade.state === this.currentFilter) : src.filter((e) => e.brigade.state === this.currentFilter);
     }, 3000);
     const src = await this.api.getCoords().toPromise();
     this.coord = this.currentFilter === null ? src : src.filter((e) => e.brigade.state === this.currentFilter);
