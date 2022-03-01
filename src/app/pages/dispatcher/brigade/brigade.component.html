@@ -7,7 +7,7 @@
       </mat-radio-group>
     </div>
     <div class="expand-container" (click)="expand()">
-      <mat-icon>keyboard_arrow_down</mat-icon>
+      <mat-icon>{{expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}</mat-icon>
     </div>
     <mgl-map
       [style]="'mapbox://styles/mafahes/ck7ytniby1cm81jlktlfxfuuh'"

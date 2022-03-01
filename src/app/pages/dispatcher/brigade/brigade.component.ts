@@ -26,7 +26,7 @@ export class BrigadeComponent implements OnInit, OnDestroy {
   }
   expand(): void {
     this.expanded = !this.expanded;
-    this.map.map.resize();
+    setTimeout(() => this.map.resize(), 200);
   }
   onMapChange(e): void {
     this.bearing = this.map.getBearing();
@@ -40,7 +40,7 @@ export class BrigadeComponent implements OnInit, OnDestroy {
     this.interval = setInterval(async () => {
       const src = await this.api.getCoords().toPromise();
       this.coord = this.currentFilter === null ? src : src.filter((e) => e.brigade.state === this.currentFilter);
-    }, 222000);
+    }, 3000);
     const src = await this.api.getCoords().toPromise();
     this.coord = this.currentFilter === null ? src : src.filter((e) => e.brigade.state === this.currentFilter);
     this.api.getBrigades().subscribe((e) => {
