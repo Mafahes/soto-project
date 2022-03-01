@@ -207,6 +207,7 @@ export interface Brigade2 {
   car: Car2;
   drivers: Driver2[];
   medicals: Medical2[];
+  code: string;
   freeSpaces: number;
   distance: number;
   longitude?: any;

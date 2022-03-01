@@ -1,3 +1,5 @@
+import { Brigade2 } from './OrderById';
+
 export interface User {
   nummer: number;
   dateBirt?: any;
@@ -32,9 +34,12 @@ export interface User {
 }
 
 export interface Cart {
+  brigadeId: number;
+  brigade: Brigade2;
   id: number;
   user: User;
   source: string;
+  state: number;
   secondName: string;
   firstName: string;
   patronymic: string;

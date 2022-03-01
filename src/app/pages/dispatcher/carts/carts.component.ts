@@ -5,6 +5,7 @@ import {ApiService} from "../../../shared/services/api.service";
 import {UserPanelsComponent, UsersComponent} from "../../admin/users/users.component";
 import {User} from "../../../shared/interfaces/User";
 import {Cart} from "../../../shared/interfaces/cart";
+import { Status } from '../../../shared/configuration';
 
 @Component({
   selector: 'app-carts',
@@ -33,14 +34,17 @@ export class CartsComponent implements OnInit {
         filter: false
       },
       username: {
-        title: 'Диспетчер',
-        valuePrepareFunction: (cell, row) => {
-          return '-';
+        title: 'Бригада',
+        valuePrepareFunction: (cell, row: Cart) => {
+          return row.brigadeId === null ? 'Бригада не назначена' : 'Бригада №' + row.brigade.code;
         },
         filter: false
       },
       source: {
-        title: 'Источник',
+        title: 'Статус заявки',
+        valuePrepareFunction: (cell, row: Cart) => {
+          return Status.orderStatus[row.state];
+        },
         filter: false
       },
       sex: {
