@@ -13,6 +13,37 @@ button {
   font-size: 18px;
   color: white;
 }
+.map-container {
+  height: 60%;
+  position: relative
+}
+.table-container {
+  height: 40%;
+  overflow-y: auto;
+  max-height: 100%
+}
+.map-container.expanded {
+  height: 100% !important;
+}
+.table-container.expanded {
+  display: none;
+}
+.expand-container {
+  &:hover {
+    cursor: pointer;
+  }
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 120px;
+  z-index: 999;
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+}
 .map-icon {
   img {
     margin-top: -5px;

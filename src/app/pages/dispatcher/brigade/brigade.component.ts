@@ -20,8 +20,13 @@ export class BrigadeComponent implements OnInit, OnDestroy {
   bearing = 0;
   statuses = Status.brigadeStatus;
   currentFilter = null;
+  expanded = false;
   onMapLoad(map): void {
     this.map = map;
+  }
+  expand(): void {
+    this.expanded = !this.expanded;
+    this.map.map.resize();
   }
   onMapChange(e): void {
     this.bearing = this.map.getBearing();

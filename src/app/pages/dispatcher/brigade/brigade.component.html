@@ -1,10 +1,13 @@
 <div class="main-wrapper d-flex flex-column">
-  <div style="height: 60%; position: relative">
+  <div class="map-container" [class.expanded]="expanded">
     <div class="filter-container">
       <mat-radio-group (change)="onFilterChange($event)" aria-label="Select an option" class="radio-filter">
         <mat-radio-button [value]="null">Все</mat-radio-button>
         <mat-radio-button *ngFor="let i of statuses; let id = index" [value]="id">{{i.label}}</mat-radio-button>
       </mat-radio-group>
+    </div>
+    <div class="expand-container" (click)="expand()">
+      <mat-icon>keyboard_arrow_down</mat-icon>
     </div>
     <mgl-map
       [style]="'mapbox://styles/mafahes/ck7ytniby1cm81jlktlfxfuuh'"
@@ -39,7 +42,7 @@
       </ng-container>
     </mgl-map>
   </div>
-  <div style="height: 40%; overflow-y: auto; max-height: 100%" class="pt-4">
+  <div [class.expanded]="expanded" class="pt-4 table-container">
     <div class="container-fluid">
       <div class="row pb-3">
         <div class="col-12 d-flex flex-row align-items-center" style="gap: 20px">
