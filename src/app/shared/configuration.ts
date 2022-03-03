@@ -15,10 +15,10 @@ export class MainRoutes {
 }
 export class Status {
   public static brigadeStatus = [
-    { label: 'Свободная бригада', value: 0 },
-    { label: 'Бригада в пути', value: 1 },
-    { label: 'Пересменка', value: 2 },
-    { label: 'Пауза', value: 3 },
+    { label: 'Не работает', value: 0 },
+    { label: 'В работе', value: 1 },
+    { label: 'Не на смене', value: 2 },
+    { label: 'Пересменка', value: 3 },
   ];
   public static orderStatus = ['Новая', 'Не подтверждена', 'Принята', 'Прибыл на место', 'Следует в морг', 'Сдал в морг', 'Отклонена'];
 }

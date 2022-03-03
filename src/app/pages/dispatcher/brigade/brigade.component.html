@@ -3,7 +3,8 @@
     <div class="filter-container">
       <mat-radio-group (change)="onFilterChange($event)" aria-label="Select an option" class="radio-filter">
         <mat-radio-button [value]="null">Все</mat-radio-button>
-        <mat-radio-button *ngFor="let i of statuses; let id = index" [value]="id">{{i.label}}</mat-radio-button>
+        <mat-radio-button [value]="'custom_1'">Свободные бригады</mat-radio-button>
+        <mat-radio-button *ngFor="let i of statuses; let id = index" [value]="i.value">{{i.label}}</mat-radio-button>
       </mat-radio-group>
     </div>
     <div class="expand-container" (click)="expand()">
@@ -23,7 +24,7 @@
         >
           <div class="d-flex flex-column map-icon align-items-center">
             <span class="spaces">{{item.space - item.freeSpace}}/{{item.space}}</span>
-            <img [src]="'assets/icons/map_icon_' + item.brigade.state + '.svg'" [style.transform]="'rotate(' + (item.heading - bearing) + 'deg)'"/>
+            <img [src]="'assets/icons/map_icon_' + (item.brigade.freeSpaces < item.brigade.space && item.brigade.state === 1 ? '0' : item.brigade.state) + '.svg'" [style.transform]="'rotate(' + (item.heading - bearing) + 'deg)'"/>
           </div>
         </mgl-marker>
         <mgl-popup [marker]="myMarker">

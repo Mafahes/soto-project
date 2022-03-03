@@ -78,6 +78,7 @@ export interface Brigade {
   drivers: Driver[];
   medicals: Medical[];
   freeSpaces: number;
+  space: number;
   distance: number;
   longitude?: any;
   latitude?: any;

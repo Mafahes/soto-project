@@ -113,7 +113,10 @@ export class ApiService {
     return this.http.get<any>(`${Api.API_LINK}api/Brigades`);
   }
   getCoords(): Observable<CoordObject[]> {
-    return this.http.get<CoordObject[]>(`${Api.API_LINK}api/Positions`);
+    return this.http.get<CoordObject[]>(`${Api.API_LINK}api/Positions`)
+      // .pipe(
+      // map((e) => e.map((e2) => ({...e2, brigade: {...e2.brigade, freeSpaces: }})))
+    // );
   }
   getBrigadesById(id): Observable<Brigade> {
     return this.http.get<any>(`${Api.API_LINK}api/Brigades/${id}`);

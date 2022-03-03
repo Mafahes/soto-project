@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import {Status} from "../configuration";
+import { CoordObject } from '../interfaces/coords';
 
 @Pipe({
   name: 'brigadeTableHelper'
@@ -25,7 +26,11 @@ export class BrigadeTableHelperPipe implements PipeTransform {
     if (args === 'findByState4') {
       return value.find((e) => e.orderInHistory.state === 4)?.dateAdd ?? '';
     }
-    return '';
+    if (args === 'mapIcon') {
+      const src = (value as CoordObject);
+      // if(src.brigade.state === 1 || src.brigade === 2) {}
+    }
+    return '0';
   }
 
 }
