@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('api_token', e.text);
       var a = await this.api.getSelf().toPromise();
       this.loading = false;
-      if (a.roleName !== 'Администратор' && a.roleName !== 'Менеджер') {
+      if (a.roleName !== 'Администратор' && a.roleName !== 'Менеджер' && a.roleName !== 'Диспетчер') {
         localStorage.removeItem('api_token');
         return;
       }

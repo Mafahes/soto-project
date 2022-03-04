@@ -26,6 +26,7 @@ export class ViewCartComponent implements OnInit {
   orderStatuses = Status.orderStatus.map((e, i) => ({i: i, v: e}));
   brigades: Brigade[] = [];
   selectedBrigade;
+  calc = 'Загрузка времени прибытия...';
   onBrigadeChange(e: Brigade): void {
     this.sanitarField = e.medicals.map((m) => `${m.user.secondName} ${m.user.firstName} ${m.user.patronymic}`).join(', ');
     this.driverField = e.drivers.map((m) => `${m.user.secondName} ${m.user.firstName} ${m.user.patronymic}`).join(', ');
@@ -35,6 +36,7 @@ export class ViewCartComponent implements OnInit {
     this.arouter.paramMap.subscribe(async (e) => {
       if (!!e.get('id')) {
         this.order = await this.api.getOrderById(e.get('id')).toPromise();
+        this.calc = this.order.brigadeId === null || !this.order ? 'Бригада не назначена' : (await this.api.calcBrigades(this.order.brigadeId, this.order.id).toPromise()).text;
         if (!this.order) {
           this.router.navigate(['/dispatcher/carts']);
         } else {

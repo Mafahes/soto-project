@@ -3,6 +3,8 @@ import { ApiService } from '../../../shared/services/api.service';
 import { Brigade } from '../../../shared/interfaces/brigade';
 import {CoordObject} from '../../../shared/interfaces/coords';
 import {Status} from "../../../shared/configuration";
+import { StorageService } from '../../../shared/injectables/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-brigade',
@@ -11,7 +13,9 @@ import {Status} from "../../../shared/configuration";
 })
 export class BrigadeComponent implements OnInit, OnDestroy {
   constructor(
-    private api: ApiService
+    private api: ApiService,
+    private storage: StorageService,
+    private router: Router
   ) { }
   brigade: Brigade[] = [];
   map: any;
@@ -45,6 +49,11 @@ export class BrigadeComponent implements OnInit, OnDestroy {
         : src.filter((e) => e.brigade.state === i.value);
   }
   async ngOnInit(): Promise<void> {
+    this.storage.user$.subscribe((e) => {
+      if (e.roleName === 'Менеджер') {
+        this.router.navigate(['/dispatcher/carts']);
+      }
+    });
     this.interval = setInterval(async () => {
       const src = await this.api.getCoords().toPromise();
       this.coord = this.currentFilter === null ? src : this.currentFilter === 2 ? src.filter((e) => e.brigade.state === 3 || e.brigade.state === 2) : this.currentFilter === 'custom_1' ? src.filter((e) => e.freeSpace > 0 && e.brigade.state === 1) : src.filter((e) => e.brigade.state === this.currentFilter);

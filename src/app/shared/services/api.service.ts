@@ -12,6 +12,7 @@ import {CartObject} from "../interfaces/cart";
 import {CoordObject} from "../interfaces/coords";
 import {OrderById} from "../interfaces/OrderById";
 import {Brigades1c} from "../interfaces/brigades1c";
+import { Calc } from '../interfaces/calc';
 
 @Injectable({
   providedIn: 'root'
@@ -112,8 +113,11 @@ export class ApiService {
   getBrigades(): Observable<BrigadeObject> {
     return this.http.get<any>(`${Api.API_LINK}api/Brigades`);
   }
+  calcBrigades(brigadeId, orderId): Observable<Calc> {
+    return this.http.get<any>(`${Api.API_LINK}api/Positions/calc?brigadeId=${brigadeId}&orderId=${orderId}`);
+  }
   getCoords(): Observable<CoordObject[]> {
-    return this.http.get<CoordObject[]>(`${Api.API_LINK}api/Positions`)
+    return this.http.get<CoordObject[]>(`${Api.API_LINK}api/Positions`);
       // .pipe(
       // map((e) => e.map((e2) => ({...e2, brigade: {...e2.brigade, freeSpaces: }})))
     // );

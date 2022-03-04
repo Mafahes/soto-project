@@ -33,7 +33,7 @@
       <ng-container *ngFor="let item of routes; let i = index">
         <div class="my-3" *ngIf="i === 0"></div>
         <mat-divider *ngIf="item.line"></mat-divider>
-        <a mat-list-item *ngIf="!item.line" routerLinkActive="active-menu-link" [routerLink]="item.path">
+        <a [class.d-none]="!item.access.includes((storage.user$ | async)?.roleName)" mat-list-item *ngIf="!item.line" routerLinkActive="active-menu-link" [routerLink]="item.path">
           <span style="flex: 3" *ngIf="!item.line" class="item-list__text">{{item.title}}</span>
         </a>
       </ng-container>

@@ -36,11 +36,11 @@ export class Roles {
 }
 export class Routes {
   public static routeList = [
-    { path: 'dispatcher/brigade', title: 'Бригады', icon: 'list_alt', line: false, access: [] },
-    { path: 'dispatcher/carts', title: 'Карточки', icon: 'list_alt', line: false, access: [] },
+    { path: 'dispatcher/brigade', title: 'Бригады', icon: 'list_alt', line: false, access: ['Администратор', 'Диспетчер'] },
+    { path: 'dispatcher/carts', title: 'Карточки', icon: 'list_alt', line: false, access: ['Администратор', 'Диспетчер', 'Менеджер'] },
     // { path: 'dispatcher/stat', title: 'Статистика', icon: 'list_alt', line: false, access: [] },
     // { path: 'admin/users', title: 'Пользователи', icon: 'list_alt', line: false, access: [] },
-    { path: 'admin/vehicle', title: 'Автомобили', icon: 'list_alt', line: false, access: [] },
+    { path: 'admin/vehicle', title: 'Автомобили', icon: 'list_alt', line: false, access: ['Администратор', 'Диспетчер', 'Менеджер'] },
 
   ];
 }

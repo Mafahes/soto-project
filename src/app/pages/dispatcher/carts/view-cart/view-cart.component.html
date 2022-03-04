@@ -14,6 +14,9 @@
         <span class="label">Передача наряда:</span>
         <span class="label">-</span>
       </div>
+      <div class="d-flex flex-row label-row">
+        <span class="label">{{calc}}</span>
+      </div>
       <span class="label">Выберите бригаду:</span>
       <ng-select (change)="onBrigadeChange($event)" [items]="brigades" [(ngModel)]="selectedBrigade" placeholder="Выберите бригаду" bindValue="id" bindLabel="name"></ng-select>
       <span class="label">Статус заявки:</span>
