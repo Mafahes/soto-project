@@ -8,7 +8,7 @@
       <span class="title">Редактирование заявки №{{order.id || '-'}}</span>
       <div class="d-flex flex-row label-row">
         <span class="label">Время создания:</span>
-        <span class="label">{{order.dateAdd | date: 'dd.MM.yyyy HH:mm'}}</span>
+        <span class="label">{{order.dateAdd | date: 'dd.MM.yyyy HH:mm':'+0000'}}</span>
       </div>
       <div class="d-flex flex-row label-row">
         <span class="label">Передача наряда:</span>
@@ -35,15 +35,15 @@
       </div>
       <div class="d-flex flex-row label-row">
         <span class="label">Принятие наряда:</span>
-        <span class="label">{{((order.history | brigadeTableHelper: 'findByState2') || '') | date: 'dd.MM.yyyy HH:mm'}}</span>
+        <span class="label">{{((order.history | brigadeTableHelper: 'findByState2') || '') | date: 'dd.MM.yyyy HH:mm':'+0000'}}</span>
       </div>
       <div class="d-flex flex-row label-row">
         <span class="label">Прибытие к месту вызова:</span>
-        <span class="label">{{((order.history | brigadeTableHelper: 'findByState3') || '') | date: 'dd.MM.yyyy HH:mm'}}</span>
+        <span class="label">{{((order.history | brigadeTableHelper: 'findByState3') || '') | date: 'dd.MM.yyyy HH:mm':'+0000'}}</span>
       </div>
       <div class="d-flex flex-row label-row">
         <span class="label">Окончание загрузки тела в автомобиль:</span>
-        <span class="label">{{((order.history | brigadeTableHelper: 'findByState4') || '') | date: 'dd.MM.yyyy HH:mm'}}</span>
+        <span class="label">{{((order.history | brigadeTableHelper: 'findByState4') || '') | date: 'dd.MM.yyyy HH:mm':'+0000'}}</span>
       </div>
       <div class="buttons-row">
       </div>
@@ -58,7 +58,7 @@
                 <span class="panel-title">{{i.description}}</span>
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <p class="history-label">{{i.dateAdd | date: 'dd.MM.yyyy в HH:mm'}}</p>
+            <p class="history-label">{{i.dateAdd | date: 'dd.MM.yyyy в HH:mm':'+0000'}}</p>
             <p class="history-label" *ngIf="i.diff.hasOwnProperty('state')">Статус изменен на: {{i.diff.state | brigadeTableHelper: 'order'}}</p>
             <p class="history-label" *ngIf="i.diff.hasOwnProperty('brigadeId')">Изменена бригада</p>
             <p class="history-label" *ngIf="i.diff.hasOwnProperty('firstName')">Изменено Имя: {{i.diff.firstName}}</p>
