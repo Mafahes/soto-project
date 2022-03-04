@@ -29,7 +29,7 @@ export class CartsComponent implements OnInit {
       dateAdd: {
         title: 'Дата и время',
         valuePrepareFunction: (cell, row) => {
-          return this.datePipe.transform(cell, 'dd.MM.yyyy HH:mm');
+          return this.datePipe.transform(new Date(cell).toISOString(), 'dd.MM.yyyy HH:mm', '+0000');
         },
         filter: false
       },

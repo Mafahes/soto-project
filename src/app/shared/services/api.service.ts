@@ -33,7 +33,9 @@ export class ApiService {
     return this.http.post<any>(`${Api.API_LINK}api/user/add`, data);
   }
   getOrders(page = 1): Observable<CartObject> {
-    return this.http.get<any>(`${Api.API_LINK}api/Orders?pageNumber=${page}`);
+    return this.http.get<CartObject>(`${Api.API_LINK}api/Orders?pageNumber=${page}`).pipe(
+      map((e) => ({...e, data: e.data.map((e2) => ({...e2, dateAdd: new Date(e2.dateAdd).toISOString()}))}))
+    );
   }
   get1cBrigades(): Observable<Brigades1c[]> {
     return this.http.get<Brigades1c[]>(`${Api.API_LINK}api/Brigades/1c`);

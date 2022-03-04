@@ -53,7 +53,7 @@ export interface Cart {
   cause: string;
   dateDeath: Date;
   isDelete: boolean;
-  dateAdd: Date;
+  dateAdd: Date | string;
   files: any[];
   history?: any;
 }
