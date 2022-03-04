@@ -22,7 +22,7 @@ export class RouteList {
         { path: 'vehicle', pathMatch: 'full', component: VehicleComponent },
         { path: 'vehicle/create', pathMatch: 'full', component: NewVehicleComponent },
         { path: 'vehicle/:id', pathMatch: 'full', component: NewVehicleComponent },
-        { path: 'users', pathMatch: 'full', component: UsersComponent }
+        // { path: 'users', pathMatch: 'full', component: UsersComponent }
       ]},
     { path: 'dispatcher', canActivate: [AuthGuard], children: [
         { path: 'brigade', pathMatch: 'full', component: BrigadeComponent },
