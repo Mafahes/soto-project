@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {OrderById} from '../../../../shared/interfaces/OrderById';
 import { Brigade, BrigadeObject } from '../../../../shared/interfaces/brigade';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Status } from '../../../../shared/configuration';
 
 @Component({
   selector: 'app-view-cart',
@@ -22,6 +23,7 @@ export class ViewCartComponent implements OnInit {
   sanitarField = '';
   driverField = '';
   carPlade = '';
+  orderStatuses = Status.orderStatus.map((e, i) => ({i: i, v: e}));
   brigades: Brigade[] = [];
   selectedBrigade;
   onBrigadeChange(e: Brigade): void {
@@ -44,7 +46,7 @@ export class ViewCartComponent implements OnInit {
           }
           const src = await this.api.getBrigades().toPromise();
           this.selectedBrigade = this.order?.brigade?.id;
-          this.brigades = src.data.map((i) => ({...i, name: `ID: ${i.id}, Номер авто: ${i.car.modelCarCode}`}));
+          this.brigades = src.data.map((i) => ({...i, name: `№: ${i.id}, Номер авто: ${i.car.modelCarCode} (${i.car.name})`}));
         }
       }
     });

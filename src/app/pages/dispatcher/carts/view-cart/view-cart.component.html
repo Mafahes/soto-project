@@ -14,9 +14,11 @@
         <span class="label">Передача наряда:</span>
         <span class="label">-</span>
       </div>
-      <span class="label">Состав бригады:</span>
+      <span class="label">Выберите бригаду:</span>
+      <ng-select (change)="onBrigadeChange($event)" [items]="brigades" [(ngModel)]="selectedBrigade" placeholder="Выберите бригаду" bindValue="id" bindLabel="name"></ng-select>
+      <span class="label">Статус заявки:</span>
+      <ng-select [items]="orderStatuses" [(ngModel)]="order.state" placeholder="Выберите бригаду" bindValue="i" bindLabel="v"></ng-select>
       <div class="input-control">
-        <ng-select (change)="onBrigadeChange($event)" [items]="brigades" [(ngModel)]="selectedBrigade" placeholder="Выберите бригаду" bindValue="id" bindLabel="name"></ng-select>
         <span>Санитар</span>
         <input readonly [(ngModel)]="sanitarField" placeholder="ФИО"/>
       </div>
