@@ -73,6 +73,7 @@ export interface Brigade {
   state: number;
   id: number;
   name: string;
+  code: string;
   autoId: number;
   car: Car;
   drivers: Driver[];

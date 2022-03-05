@@ -52,7 +52,7 @@ export class BrigadeComponent implements OnInit, OnDestroy {
   }
   async ngOnInit(): Promise<void> {
     this.storage.user$.subscribe((e) => {
-      if (e.roleName === 'Менеджер') {
+      if (e?.roleName === 'Менеджер') {
         this.router.navigate(['/dispatcher/carts']);
       }
     });

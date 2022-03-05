@@ -5,6 +5,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import {Router} from '@angular/router';
 import {CodeInputComponent} from 'angular-code-input';
 import {AppComponent} from "../../app.component";
+import { StorageService } from '../../shared/injectables/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
     private app: AppComponent,
     private router: Router,
     private api: ApiService,
+    private storage: StorageService,
     private snackBar: MatSnackBar) { }
   ngOnInit(): void {
   }
@@ -35,6 +37,7 @@ export class LoginComponent implements OnInit {
         localStorage.removeItem('api_token');
         return;
       }
+      this.storage.setData('user', a);
       this.router.navigate(['/dispatcher/brigade']);
       // await this.app.parseUser();
       // let a = await this.app.getSessions();

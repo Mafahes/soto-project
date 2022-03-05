@@ -15,7 +15,7 @@ export class PreloadProvider {
 
   load(): Promise<any> {
     return new Promise(async (resolve, reject) => {
-      if (!!localStorage.getItem('mode')) {
+      if (!!localStorage.getItem('api_token')) {
         try {
           const user = await this.api.getSelf().toPromise();
           this.storage.setData('user', user);
