@@ -57,7 +57,7 @@
         <span>Бригада №{{i.id}}</span>
       </div>
       <div class="w-25">
-        <span>Санитар: {{i?.drivers | brigadeTableHelper: 'drivers'}}</span>
+        <span>Санитар: {{i?.medicals | brigadeTableHelper: 'drivers'}}</span>
       </div>
       <div class="w-25">
         <span>{{i?.car?.code || ''}}</span>
