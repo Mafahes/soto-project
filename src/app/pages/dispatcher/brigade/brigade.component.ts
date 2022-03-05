@@ -66,7 +66,7 @@ export class BrigadeComponent implements OnInit, OnDestroy {
           : this.currentFilter === 2
           ? src.filter((e) => e.brigade.state === 3 || e.brigade.state === 2)
           : this.currentFilter === 'custom_1'
-          ? src.filter((e) => e.freeSpace > 0 && e.brigade.state === 1)
+          ? src.filter((e) => e.freeSpace === e.space && e.brigade.state === 1)
           : src.filter((e) => e.brigade.state === this.currentFilter);
     }, 3000);
     const src = await this.api.getCoords().toPromise();
