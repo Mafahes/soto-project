@@ -1,22 +1,22 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ApiService } from '../../../shared/services/api.service';
 import { Brigade } from '../../../shared/interfaces/brigade';
-import {CoordObject} from '../../../shared/interfaces/coords';
-import {Status} from "../../../shared/configuration";
+import { CoordObject } from '../../../shared/interfaces/coords';
+import { Status } from '../../../shared/configuration';
 import { StorageService } from '../../../shared/injectables/storage.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-brigade',
   templateUrl: './brigade.component.html',
-  styleUrls: ['./brigade.component.scss']
+  styleUrls: ['./brigade.component.scss'],
 })
 export class BrigadeComponent implements OnInit, OnDestroy {
   constructor(
     private api: ApiService,
     private storage: StorageService,
     private router: Router
-  ) { }
+  ) {}
   brigade: Brigade[] = [];
   map: any;
   coord: CoordObject[] = [];
@@ -42,10 +42,12 @@ export class BrigadeComponent implements OnInit, OnDestroy {
     this.coord =
       i.value === null
         ? src
+        : i.value === 1
+        ? src.filter((e) => e.space - e.freeSpace > 0)
         : i.value === 2
         ? src.filter((e) => e.brigade.state === 3 || e.brigade.state === 2) // Не на смене
         : i.value === 'custom_1'
-        ? src.filter((e) => e.freeSpace > 0 && e.brigade.state === 1) // Свободные бригады
+        ? src.filter((e) => e.freeSpace === e.space && e.brigade.state === 1) // Свободные бригады
         : src.filter((e) => e.brigade.state === i.value);
   }
   async ngOnInit(): Promise<void> {
@@ -56,10 +58,22 @@ export class BrigadeComponent implements OnInit, OnDestroy {
     });
     this.interval = setInterval(async () => {
       const src = await this.api.getCoords().toPromise();
-      this.coord = this.currentFilter === null ? src : this.currentFilter === 2 ? src.filter((e) => e.brigade.state === 3 || e.brigade.state === 2) : this.currentFilter === 'custom_1' ? src.filter((e) => e.freeSpace > 0 && e.brigade.state === 1) : src.filter((e) => e.brigade.state === this.currentFilter);
+      this.coord =
+        this.currentFilter === null
+          ? src
+          : this.currentFilter === 1
+          ? src.filter((e) => e.space - e.freeSpace > 0)
+          : this.currentFilter === 2
+          ? src.filter((e) => e.brigade.state === 3 || e.brigade.state === 2)
+          : this.currentFilter === 'custom_1'
+          ? src.filter((e) => e.freeSpace > 0 && e.brigade.state === 1)
+          : src.filter((e) => e.brigade.state === this.currentFilter);
     }, 3000);
     const src = await this.api.getCoords().toPromise();
-    this.coord = this.currentFilter === null ? src : src.filter((e) => e.brigade.state === this.currentFilter);
+    this.coord =
+      this.currentFilter === null
+        ? src
+        : src.filter((e) => e.brigade.state === this.currentFilter);
     this.api.getBrigades().subscribe((e) => {
       this.brigade = e.data;
     });
