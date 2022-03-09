@@ -32,8 +32,8 @@ export class ApiService {
   addUser(data): Observable<any> {
     return this.http.post<any>(`${Api.API_LINK}api/user/add`, data);
   }
-  getOrders(page = 1): Observable<CartObject> {
-    return this.http.get<CartObject>(`${Api.API_LINK}api/Orders?pageNumber=${page}`).pipe(
+  getOrders(page = 1, field: string = null, type = null): Observable<CartObject> {
+    return this.http.get<CartObject>(`${Api.API_LINK}api/Orders?pageNumber=${page}${field !== null ? `&OrderByField=${field.charAt(0).toUpperCase() + field.slice(1)}` : ``}${type !== null ? `&Desc=${type === 'desc'}` : ``}`).pipe(
       map((e) => ({...e, data: e.data.map((e2) => ({...e2, dateAdd: new Date(e2.dateAdd).toISOString()}))}))
     );
   }

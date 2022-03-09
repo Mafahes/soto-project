@@ -10,9 +10,19 @@
         <span class="label">Время создания:</span>
         <span class="label">{{order.dateAdd | date: 'dd.MM.yyyy HH:mm':'+0000'}}</span>
       </div>
-      <div class="d-flex flex-row label-row">
-        <span class="label">Передача наряда:</span>
-        <span class="label">-</span>
+      <div class="d-flex flex-column form">
+        <div class="d-flex flex-row label-row">
+          <span class="label">Номер сопроводительного листа</span>
+          <span class="label">{{order.formNumber || '-'}}</span>
+        </div>
+        <div class="d-flex flex-row label-row">
+          <span class="label">Должность:</span>
+          <span class="label">{{order.formPosition || '-'}}</span>
+        </div>
+        <div class="d-flex flex-row label-row">
+          <span class="label">ФИО:</span>
+          <span class="label">{{order.formInitial || '-'}}</span>
+        </div>
       </div>
       <div class="d-flex flex-row label-row">
         <span class="label">{{calc}}</span>

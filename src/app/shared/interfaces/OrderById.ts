@@ -280,4 +280,7 @@ export interface OrderById {
   dateAdd: Date;
   files: any[];
   history: History[];
+  formInitial: string;
+  formNumber: string;
+  formPosition: string;
 }

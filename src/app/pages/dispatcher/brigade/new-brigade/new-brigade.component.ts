@@ -65,7 +65,7 @@ export class NewBrigadeComponent implements OnInit {
   async checkUser(id: User): Promise<void> {
     const state: any = await this.api.checkBrigadeMember(id.nummer).toPromise();
     if (state.state === false) {
-      this.snackBar.open(`Внимание: ${id.firstName || '-'} ${id.patronymic} находится в другой бригаде!`, null, { duration: 4000 });
+      this.snackBar.open(`Внимание: ${id.firstName || '-'} ${id.patronymic} находится в другой бригаде!`, null, { duration: 8000 });
     }
   }
   async createBrigade(): Promise<void> {

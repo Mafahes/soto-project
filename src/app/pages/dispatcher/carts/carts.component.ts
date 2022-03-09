@@ -31,6 +31,12 @@ export class CartsComponent implements OnInit {
         valuePrepareFunction: (cell, row) => {
           return this.datePipe.transform(new Date(cell).toISOString(), 'dd.MM.yyyy HH:mm', '+0000');
         },
+        // compareFunction: (direction: any, a: string, b: string) => {
+        //   var a1 = new Date(a.replace('Z', '+0300'));
+        //   var b1 = new Date(b.replace('Z', '+0300'));
+        //   console.log(direction);
+        //   return a1.getTime() > b1.getTime() ? 1 : -1;
+        // },
         filter: false
       },
       username: {
@@ -38,9 +44,10 @@ export class CartsComponent implements OnInit {
         valuePrepareFunction: (cell, row: Cart) => {
           return row.brigadeId === null ? 'Бригада не назначена' : 'Бригада №' + row.brigade.id;
         },
-        filter: false
+        filter: false,
+        sort: false
       },
-      source: {
+      state: {
         title: 'Статус заявки',
         valuePrepareFunction: (cell, row: Cart) => {
           return Status.orderStatus[row.state];
@@ -87,6 +94,14 @@ export class CartsComponent implements OnInit {
       console.log(this.pages);
       console.log(Array.from(String(e.pageSize), Number));
       this.source = new LocalDataSource(e.data);
+      this.source.onChanged().subscribe(async (c) => {
+        if (c.action === 'sort') {
+          console.log(c);
+          const ord = await this.api.getOrders(c.paging.page, c.sort[0].field, c.sort[0].direction).toPromise();
+          await this.source.load(ord.data);
+          // this.source.load((ord as unknown as any[]));
+        }
+      });
     });
   }
   async onPageChange(e): Promise<void> {
@@ -115,7 +130,6 @@ export class CartPanelsComponent implements OnInit, ViewCell {
   @Input() rowData: Cart;
 
   ngOnInit(): void {
-    console.log(this.value);
   }
   onEdit(): void {
   }
