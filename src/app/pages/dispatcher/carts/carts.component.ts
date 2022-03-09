@@ -36,7 +36,7 @@ export class CartsComponent implements OnInit {
       username: {
         title: 'Бригада',
         valuePrepareFunction: (cell, row: Cart) => {
-          return row.brigadeId === null ? 'Бригада не назначена' : 'Бригада №' + row.brigade.code;
+          return row.brigadeId === null ? 'Бригада не назначена' : 'Бригада №' + row.brigade.id;
         },
         filter: false
       },
