@@ -24,6 +24,14 @@
           <span class="label">{{order.formInitial || '-'}}</span>
         </div>
       </div>
+      <div class="d-flex flex-row label-row" *ngIf="!!order.cause">
+        <span class="label">Причина отказа:</span>
+        <span class="label">{{order.cause}}</span>
+      </div>
+      <div class="d-flex flex-row label-row">
+        <span class="label">Комментарий от бригады:</span>
+        <span class="label">{{order.comment || '-'}}</span>
+      </div>
       <div class="d-flex flex-row label-row">
         <span class="label">{{calc}}</span>
       </div>
@@ -82,6 +90,7 @@
             <p class="history-label" *ngIf="i.diff.hasOwnProperty('firstName')">Изменено Имя: {{i.diff.firstName}}</p>
             <p class="history-label" *ngIf="i.diff.hasOwnProperty('secondName')">Изменена Фамилия: {{i.diff.secondName}}</p>
             <p class="history-label" *ngIf="i.diff.hasOwnProperty('patronymic')">Изменено Отчество: {{i.diff.patronymic}}</p>
+            <p class="history-label" *ngIf="i.diff.hasOwnProperty('comment')">Прошлый комментарий: {{i.diff.comment}}</p>
 
           </mat-expansion-panel>
         </mat-accordion>

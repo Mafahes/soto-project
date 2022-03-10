@@ -274,6 +274,7 @@ export interface OrderById {
   phoneContact: string;
   secondPhoneContact: string;
   cause: string;
+  comment: string;
   dateDeath: Date;
   state: number;
   isDelete: boolean;
