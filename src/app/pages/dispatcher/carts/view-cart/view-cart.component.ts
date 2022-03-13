@@ -46,7 +46,7 @@ export class ViewCartComponent implements OnInit {
             this.carPlade = this.order.brigade.car.name;
           } catch (e) {
           }
-          const src = await this.api.getBrigades().toPromise();
+          const src = await this.api.getBrigades(100).toPromise();
           this.selectedBrigade = this.order?.brigade?.id;
           this.brigades = src.data.map((i) => ({...i, name: `№: ${i.id}, Номер авто: ${i.car.modelCarCode} (${i.car.name})`}));
         }

@@ -52,6 +52,7 @@
         </div>
       </div>
     </div>
+    <div class="d-none" *ngFor="let i of total | paginate: { itemsPerPage: 5, currentPage: page }"></div>
     <div *ngFor="let i of brigade" [routerLink]="'/dispatcher/brigade/' + i.id" class="item px-3 d-flex flex-row">
       <div class="w-25">
         <span>Бригада №{{i.id}}</span>
@@ -67,4 +68,5 @@
       </div>
     </div>
   </div>
+  <pagination-controls [nextLabel]="'Далее'" [previousLabel]="'Назад'" (pageChange)="onPageChange($event)"></pagination-controls>
 </div>

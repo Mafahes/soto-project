@@ -22,6 +22,8 @@ export class BrigadeComponent implements OnInit, OnDestroy {
   coord: CoordObject[] = [];
   interval;
   bearing = 0;
+  page = 0;
+  total = [];
   statuses = Status.brigadeStatus.filter((e) => e.value !== 0 && e.value !== 3);
   currentFilter = null;
   expanded = false;
@@ -91,6 +93,10 @@ export class BrigadeComponent implements OnInit, OnDestroy {
         ? src.filter((e) => e.freeSpace === e.space && e.brigade.state === 1) // Свободные бригады
         : src.filter((e) => e.brigade.state === i.value);
   }
+  async onPageChange(e): Promise<void> {
+    this.brigade = (await this.api.getBrigades(5, e).toPromise()).data;
+    this.page = e;
+  }
   async ngOnInit(): Promise<void> {
     this.storage.user$.subscribe((e) => {
       if (e?.roleName === 'Менеджер') {
@@ -115,8 +121,12 @@ export class BrigadeComponent implements OnInit, OnDestroy {
       this.currentFilter === null
         ? src
         : src.filter((e) => e.brigade.state === this.currentFilter);
-    this.api.getBrigades().subscribe((e) => {
+    this.api.getBrigades(5).subscribe((e) => {
       this.brigade = e.data;
+      this.total = [];
+      for (let i = 0; i < e.totalRecords; i++) {
+        this.total.push(i + 1);
+      }
     });
   }
   ngOnDestroy(): void {
