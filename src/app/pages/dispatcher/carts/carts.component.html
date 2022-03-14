@@ -17,7 +17,7 @@
       </div>
       <ng2-smart-table [source]="source" [settings]="settings"></ng2-smart-table>
       <div class="my-3"></div>
-      <pagination-controls [nextLabel]="'Далее'" [previousLabel]="'Назад'" (pageChange)="onPageChange($event)"></pagination-controls>
+      <pagination-controls class="d-none" [nextLabel]="'Далее'" [previousLabel]="'Назад'" (pageChange)="onPageChange($event)"></pagination-controls>
     </div>
   </div>
 </div>
