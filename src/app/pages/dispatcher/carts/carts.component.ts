@@ -26,6 +26,10 @@ export class CartsComponent implements OnInit {
         title: '№',
         filter: false
       },
+      number: {
+        title: '№ (2)',
+        filter: false
+      },
       dateAdd: {
         title: 'Дата и время',
         valuePrepareFunction: (cell, row) => {
