@@ -112,8 +112,8 @@ export class ApiService {
   checkBrigadeMember(id): Observable<BrigadeObject> {
     return this.http.get<any>(`${Api.API_LINK}api/Brigades/check-user/${id}`);
   }
-  getBrigades(size = 10, page = 0): Observable<BrigadeObject> {
-    return this.http.get<any>(`${Api.API_LINK}api/Brigades?PageSize=${size}&PageNumber=${page}`);
+  getBrigades(size = 10, page = 0, search = null): Observable<BrigadeObject> {
+    return this.http.get<any>(`${Api.API_LINK}api/Brigades?PageSize=${size}&PageNumber=${page}${search === null ? '' : `&Search=${search}`}`);
   }
   calcBrigades(brigadeId, orderId): Observable<Calc> {
     return this.http.get<any>(`${Api.API_LINK}api/Positions/calc?brigadeId=${brigadeId}&orderId=${orderId}`);

@@ -1,17 +1,19 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { ApiService } from '../../../shared/services/api.service';
 import { Brigade } from '../../../shared/interfaces/brigade';
 import { CoordObject } from '../../../shared/interfaces/coords';
 import { Status } from '../../../shared/configuration';
 import { StorageService } from '../../../shared/injectables/storage.service';
 import { Router } from '@angular/router';
+import {debounceTime, distinctUntilChanged, filter, tap} from "rxjs/operators";
+import {fromEvent} from "rxjs";
 
 @Component({
   selector: 'app-brigade',
   templateUrl: './brigade.component.html',
   styleUrls: ['./brigade.component.scss'],
 })
-export class BrigadeComponent implements OnInit, OnDestroy {
+export class BrigadeComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private api: ApiService,
     private storage: StorageService,
@@ -27,6 +29,20 @@ export class BrigadeComponent implements OnInit, OnDestroy {
   statuses = Status.brigadeStatus.filter((e) => e.value !== 0 && e.value !== 3);
   currentFilter = null;
   expanded = false;
+  @ViewChild('search') input: ElementRef;
+  ngAfterViewInit(): void {
+    // server-side search
+    fromEvent(this.input.nativeElement, 'keyup')
+      .pipe(
+        filter(Boolean),
+        debounceTime(800),
+        distinctUntilChanged(),
+        tap(async (text) => {
+          this.brigade = (await this.api.getBrigades(5, this.page, this.input.nativeElement.value).toPromise()).data;
+        })
+      )
+      .subscribe();
+  }
   onMapLoad(map): void {
     this.map = map;
     // const layers = map.getStyle().layers;

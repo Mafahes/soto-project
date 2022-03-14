@@ -1,6 +1,10 @@
 .main-wrapper {
   height: 93vh;
 }
+input {
+  border-bottom: 1px solid black;
+  border-radius: 0;
+}
 button {
   font-family: HumanistRegular, sans-serif;
   color: white;
